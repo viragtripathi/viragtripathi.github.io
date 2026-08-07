@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Virag Tripathi — Sr. Principal AI &amp; Ecosystem Engineer</title>
+<meta name="description" content="Sr. Principal AI & Ecosystem Engineer at Cockroach Labs. I make CockroachDB a natural fit across AI tooling, CDC, orchestration, and the mainframe. Most of my work ships as open source." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    /* CRL light brand (default) */
+    --bg:#f4f1ec; --panel:#ffffff; --panel2:#faf8f4; --line:#e4ddd1;
+    --text:#0e1428; --muted:#5c6473; --accent:#cf2132; --accent2:#0e1428;
+    --shadow:0 1px 2px rgba(14,20,40,0.04),0 8px 24px rgba(14,20,40,0.06);
+    --radius:14px; --max:960px;
+  }
+  html[data-theme="dark"]{
+    --bg:#0b0f17; --panel:#121826; --panel2:#161d2e; --line:#233149;
+    --text:#e8edf6; --muted:#93a1b8; --accent:#ff5c4d; --accent2:#5cc8ff;
+    --shadow:0 1px 2px rgba(0,0,0,0.3),0 8px 24px rgba(0,0,0,0.25);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .3s ease,color .3s ease}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:'DM Sans',sans-serif;line-height:1.15;letter-spacing:-0.02em;font-weight:700}
+  .mono{font-family:'DM Mono',monospace}
+
+  /* Theme toggle */
+  .toggle{position:fixed;top:20px;right:20px;z-index:50;display:inline-flex;align-items:center;gap:8px;
+    background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;
+    font-family:'DM Mono',monospace;font-size:12.5px;color:var(--text);box-shadow:var(--shadow);transition:.2s}
+  .toggle:hover{border-color:var(--accent)}
+  .toggle svg{width:15px;height:15px}
+  .toggle .lbl{letter-spacing:0.04em}
+
+  /* Hero */
+  header{padding:104px 0 56px;border-bottom:1px solid var(--line);
+    background:radial-gradient(900px 420px at 12% -10%,rgba(207,33,50,0.08),transparent 60%),radial-gradient(760px 380px at 92% 0%,rgba(14,20,40,0.05),transparent 55%)}
+  html[data-theme="dark"] header{background:radial-gradient(900px 420px at 12% -10%,rgba(255,92,77,0.10),transparent 60%),radial-gradient(760px 380px at 92% 0%,rgba(92,200,255,0.08),transparent 55%)}
+  .eyebrow{color:var(--accent);font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:18px}
+  h1{font-size:clamp(38px,7vw,68px)}
+  .role{font-size:clamp(18px,2.5vw,24px);color:var(--text);font-weight:600;margin-top:10px}
+  .lede{color:var(--muted);font-size:18px;max-width:640px;margin-top:22px}
+  .links{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:500;color:var(--text);transition:.2s;background:var(--panel);box-shadow:var(--shadow)}
+  .btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn.primary:hover{filter:brightness(1.05)}
+
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  .kicker{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h2{font-size:clamp(24px,4vw,34px);font-weight:700;margin-bottom:14px}
+  .sub{color:var(--muted);max-width:680px;margin-bottom:30px}
+
+  .grid{display:grid;gap:14px}
+  .cols-2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:720px){.cols-2{grid-template-columns:1fr}}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;transition:.2s;box-shadow:var(--shadow)}
+  .card:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .card h3{font-size:17px;font-weight:600;margin-bottom:6px}
+  .card p{color:var(--muted);font-size:14.5px}
+  .card .repo{font-family:'DM Mono',monospace;font-size:12.5px;color:var(--accent);margin-top:12px;display:inline-block}
+
+  .row{display:grid;grid-template-columns:200px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)}
+  .row:first-child{border-top:none}
+  .row .proj{font-weight:700;font-size:16px}
+  .row .proj a{color:var(--accent)}
+  .row .what{color:var(--muted);font-size:15px}
+  @media(max-width:720px){.row{grid-template-columns:1fr;gap:4px}}
+
+  .taglist{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  .tag{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+
+  footer{padding:56px 0 80px;text-align:center}
+  footer p{color:var(--muted);font-size:14px;margin-top:14px}
+  .foot-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+  .foot-links a{color:var(--accent);font-size:14px;font-family:'DM Mono',monospace}
+</style>
+</head>
+<body>
+
+<button class="toggle" id="themeToggle" aria-label="Toggle color theme">
+  <span id="themeIcon"></span><span class="lbl" id="themeLabel"></span>
+</button>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Cockroach Labs</div>
+    <h1>Virag Tripathi</h1>
+    <div class="role">Sr. Principal AI &amp; Ecosystem Engineer</div>
+    <p class="lede">I make CockroachDB a natural fit wherever people already build, from AI coding tools and agent frameworks to change data capture, orchestration, and the mainframe. Most of my work ships as open source in the projects developers actually use.</p>
+    <div class="links">
+      <a class="btn primary" href="https://github.com/viragtripathi">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/virag">LinkedIn</a>
+      <a class="btn" href="https://x.com/viragmtripathi">X</a>
+      <a class="btn" href="https://medium.com/@virag.tripathi">Medium</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">AI developer tooling</div>
+    <h2>CockroachDB, built into the tools developers use</h2>
+    <p class="sub">CockroachDB now shows up as a first class option inside the major AI coding tools. I built and maintain the official plugins, all sharing one skills library and MCP backend, so an AI agent can stand up a local cluster and build an app that follows CockroachDB best practices by default.</p>
+    <div class="grid cols-2">
+      <div class="card"><h3>Cursor plugin</h3><p>Official CockroachDB plugin for the Cursor editor.</p><a class="repo" href="https://github.com/cockroachdb/cursor-plugin">cockroachdb/cursor-plugin</a></div>
+      <div class="card"><h3>Claude plugin</h3><p>Official CockroachDB plugin for Claude and Claude Code.</p><a class="repo" href="https://github.com/cockroachdb/claude-plugin">cockroachdb/claude-plugin</a></div>
+      <div class="card"><h3>GitHub Copilot plugin</h3><p>Schema aware assistance and query generation in Copilot.</p><a class="repo" href="https://github.com/cockroachdb/copilot-plugin">cockroachdb/copilot-plugin</a></div>
+      <div class="card"><h3>OpenAI Codex plugin</h3><p>CockroachDB development plugin for OpenAI Codex.</p><a class="repo" href="https://github.com/cockroachdb/codex-plugin">cockroachdb/codex-plugin</a></div>
+      <div class="card"><h3>CockroachDB Skills</h3><p>33+ agent skills across 9 operational domains, shared by every plugin. Install once, use across 40+ agents.</p><a class="repo" href="https://github.com/cockroachlabs/cockroachdb-skills">cockroachlabs/cockroachdb-skills</a></div>
+      <div class="card"><h3>MCP server</h3><p>Model Context Protocol backend that connects agents to CockroachDB.</p><a class="repo" href="https://github.com/cockroachdb/cockroachdb-mcp-server">cockroachdb/cockroachdb-mcp-server</a></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Open source contributions</div>
+    <h2>In the projects developers already run</h2>
+    <p class="sub">The highest leverage way to grow an ecosystem is to meet developers where they are. These landed upstream, in the tools teams already depend on.</p>
+    <div>
+      <div class="row"><div class="proj"><a href="https://github.com/googleapis/genai-toolbox">Google MCP Toolbox</a></div><div class="what">CockroachDB added as an officially supported database, alongside Postgres, Spanner, and AlloyDB.</div></div>
+      <div class="row"><div class="proj"><a href="https://github.com/debezium/debezium">Debezium</a></div><div class="what">CockroachDB as both a source, through a native changefeed connector, and a JDBC sink merged into Debezium core, with documentation.</div></div>
+      <div class="row"><div class="proj"><a href="https://github.com/PeerDB-io/peerdb">PeerDB</a></div><div class="what">Native CockroachDB source connector for streaming changes into ClickHouse, built with the PeerDB and ClickHouse team.</div></div>
+      <div class="row"><div class="proj"><a href="https://github.com/apache/airflow">Apache Airflow</a></div><div class="what">Core Postgres compatibility work plus the SQLAlchemy dialect, so Airflow can run on CockroachDB.</div></div>
+      <div class="row"><div class="proj"><a href="https://github.com/cockroachdb/langchain-cockroachdb">LangChain</a></div><div class="what">Official SDK with vector store, hybrid search, chat history, and a LangGraph checkpointer, listed in the LangChain docs.</div></div>
+      <div class="row"><div class="proj"><a href="https://github.com/zilliztech/VectorDBBench">VectorDBBench</a></div><div class="what">CockroachDB and C-SPANN vector support added to the standard vector database benchmark.</div></div>
+      <div class="row"><div class="proj"><a href="https://github.com/cockroachdb/cockroach">CockroachDB core</a></div><div class="what">IBM Z (s390x) and Power (ppc64le) platform work, done with engineering, plus a cross architecture hybrid cluster investigation.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Tools I maintain</div>
+    <h2>Things I built to make the work easier</h2>
+    <div class="grid cols-2">
+      <div class="card"><h3>crdb-dump</h3><p>Export and import schema and data in SQL, JSON, YAML, or CSV.</p><a class="repo" href="https://github.com/viragtripathi/crdb-dump">viragtripathi/crdb-dump</a></div>
+      <div class="card"><h3>cockroachdb-jdbc-wrapper</h3><p>Automatic retry for transient errors, with no application code changes.</p><a class="repo" href="https://github.com/viragtripathi/cockroachdb-jdbc-wrapper">viragtripathi/cockroachdb-jdbc-wrapper</a></div>
+      <div class="card"><h3>cockroachdb-analyzer</h3><p>Modular diagnostic and performance analysis.</p><a class="repo" href="https://github.com/viragtripathi/cockroachdb-analyzer">viragtripathi/cockroachdb-analyzer</a></div>
+      <div class="card"><h3>cockroach-chaos-demo</h3><p>Multi-region resilience demo you can run yourself.</p><a class="repo" href="https://github.com/viragtripathi/cockroach-chaos-demo">viragtripathi/cockroach-chaos-demo</a></div>
+      <div class="card"><h3>cockroachdb-airflow-poc</h3><p>Reference for running Apache Airflow on CockroachDB.</p><a class="repo" href="https://github.com/viragtripathi/cockroachdb-airflow-poc">viragtripathi/cockroachdb-airflow-poc</a></div>
+      <div class="card"><h3>debezium-cockroachdb-examples</h3><p>Runnable change data capture configurations.</p><a class="repo" href="https://github.com/viragtripathi/debezium-cockroachdb-examples">viragtripathi/debezium-cockroachdb-examples</a></div>
+    </div>
+    <div class="taglist">
+      <span class="tag">Distributed SQL</span>
+      <span class="tag">AI agents &amp; MCP</span>
+      <span class="tag">Vector search</span>
+      <span class="tag">Change data capture</span>
+      <span class="tag">Orchestration</span>
+      <span class="tag">Mainframe modernization</span>
+      <span class="tag">Open source</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Writing</div>
+    <h2>I write about the work as it ships</h2>
+    <p class="sub">Recent pieces cover agentic AI on watsonx with CockroachDB, running CockroachDB on IBM LinuxONE, multi source reasoning with the MCP Toolbox, hybrid vector search, and durable agents with LangChain and LangGraph.</p>
+    <div class="links">
+      <a class="btn primary" href="https://medium.com/@virag.tripathi">Read on Medium</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Let's build something</h2>
+    <p>Always up for a conversation about the ecosystem, distributed SQL, or where an integration could make a difference.</p>
+    <div class="foot-links" style="margin-top:22px">
+      <a href="https://github.com/viragtripathi">github.com/viragtripathi</a>
+      <a href="https://www.linkedin.com/in/virag">linkedin.com/in/virag</a>
+      <a href="https://x.com/viragmtripathi">x.com/viragmtripathi</a>
+      <a href="https://medium.com/@virag.tripathi">medium.com/@virag.tripathi</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+  var MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+  var root = document.documentElement;
+  var icon = document.getElementById('themeIcon');
+  var label = document.getElementById('themeLabel');
+  function apply(t){
+    root.setAttribute('data-theme', t);
+    if(t === 'light'){ icon.innerHTML = MOON; label.textContent = 'Dark'; }
+    else { icon.innerHTML = SUN; label.textContent = 'Light'; }
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('theme'); } catch(e){}
+  apply(saved === 'dark' ? 'dark' : 'light');
+  document.getElementById('themeToggle').addEventListener('click', function(){
+    var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    apply(next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+</script>
+
+</body>
+</html>
