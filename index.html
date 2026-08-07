@@ -71,6 +71,8 @@
   .row .proj{font-weight:700;font-size:16px}
   .row .proj a{color:var(--accent)}
   .row .what{color:var(--muted);font-size:15px}
+  .row .what a{color:var(--accent);border-bottom:1px solid transparent;transition:.15s}
+  .row .what a:hover{border-bottom-color:var(--accent)}
   @media(max-width:720px){.row{grid-template-columns:1fr;gap:4px}}
 
   .taglist{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
@@ -125,11 +127,11 @@
     <h2>In the projects developers already run</h2>
     <p class="sub">The highest leverage way to grow an ecosystem is to meet developers where they are. These landed upstream, in the tools teams already depend on.</p>
     <div>
-      <div class="row"><div class="proj"><a href="https://github.com/googleapis/genai-toolbox">Google MCP Toolbox</a></div><div class="what">CockroachDB added as an officially supported database, alongside Postgres, Spanner, and AlloyDB.</div></div>
-      <div class="row"><div class="proj"><a href="https://github.com/debezium/debezium">Debezium</a></div><div class="what">CockroachDB as both a source, through a native changefeed connector, and a JDBC sink merged into Debezium core, with documentation.</div></div>
+      <div class="row"><div class="proj"><a href="https://github.com/googleapis/genai-toolbox">Google MCP Toolbox</a></div><div class="what">CockroachDB added as an officially supported database, alongside Postgres, Spanner, and AlloyDB. <a href="https://mcp-toolbox.dev/integrations/cockroachdb/source/">Docs</a>.</div></div>
+      <div class="row"><div class="proj"><a href="https://github.com/debezium/debezium-connector-cockroachdb">Debezium</a></div><div class="what">CockroachDB as both a source, through a native changefeed connector, and a JDBC sink merged into Debezium core. <a href="https://debezium.io/documentation/reference/stable/connectors/cockroachdb.html">Docs</a>.</div></div>
       <div class="row"><div class="proj"><a href="https://github.com/PeerDB-io/peerdb">PeerDB</a></div><div class="what">Native CockroachDB source connector for streaming changes into ClickHouse, built with the PeerDB and ClickHouse team.</div></div>
       <div class="row"><div class="proj"><a href="https://github.com/apache/airflow">Apache Airflow</a></div><div class="what">Core Postgres compatibility work plus the SQLAlchemy dialect, so Airflow can run on CockroachDB.</div></div>
-      <div class="row"><div class="proj"><a href="https://github.com/cockroachdb/langchain-cockroachdb">LangChain</a></div><div class="what">Official SDK with vector store, hybrid search, chat history, and a LangGraph checkpointer, listed in the LangChain docs.</div></div>
+      <div class="row"><div class="proj"><a href="https://github.com/cockroachdb/langchain-cockroachdb">LangChain</a></div><div class="what">Official SDK with vector store, hybrid search, chat history, and a LangGraph checkpointer. <a href="https://docs.langchain.com/oss/python/integrations/providers/cockroachdb">Docs</a>.</div></div>
       <div class="row"><div class="proj"><a href="https://github.com/zilliztech/VectorDBBench">VectorDBBench</a></div><div class="what">CockroachDB and C-SPANN vector support added to the standard vector database benchmark.</div></div>
       <div class="row"><div class="proj"><a href="https://github.com/cockroachdb/cockroach">CockroachDB core</a></div><div class="what">IBM Z (s390x) and Power (ppc64le) platform work, done with engineering, plus a cross architecture hybrid cluster investigation.</div></div>
     </div>
