@@ -146,15 +146,15 @@
 
 const ABOUT = [
   `I build the integrations that put CockroachDB inside the tools developers and data teams already use. I wrote CockroachDB's connectors for Debezium and ClickHouse, its LangChain integration, its Google MCP Toolbox integration and its plugins for Claude Code, Cursor, GitHub Copilot and OpenAI Codex.`,
-  `I started that work from scratch, and the role I hold now was created around it. The code lives upstream across the cockroachdb, cockroachlabs, debezium, PeerDB, googleapis and langchain-ai GitHub orgs, not just my own account, and two of my demos run live on demos.cockroachlabs.com. Along the way I keep finding and filing bugs in CockroachDB itself, which is what happens when you push a database through other people's systems.`,
-  `Before Cockroach Labs I spent more than two decades in data integration, messaging and distributed systems at Redis, TIBCO, JetBlue, Delta Air Lines and Cingular Wireless. President's Club at Cockroach Labs and three times at Redis, plus the Redis CEO Award. I still write the code myself, and I still think the best way to win a partner over is to build something real with them.`
+  `I started that work from scratch, and the role I hold now was created around it. Before that I spearheaded CockroachDB's work with IBM, from the first LinuxONE validation through the IBM Power port, the technical groundwork behind the OEM agreement IBM announced in 2025. The code lives upstream across the cockroachdb, cockroachlabs, debezium, PeerDB, googleapis and langchain-ai GitHub orgs, not just my own account, and two of my demos run live on demos.cockroachlabs.com. Along the way I keep finding and filing bugs in CockroachDB itself, which is what happens when you push a database through other people's systems.`,
+  `Before Cockroach Labs I spent more than two decades in data integration, messaging and distributed systems at Redis, TIBCO, JetBlue, Delta Air Lines and Cingular Wireless. President's Club at Cockroach Labs and three times at Redis, the Redis CEO Award, and IBM named me an IBM Champion. I still write the code myself, and I still think the best way to win a partner over is to build something real with them.`
 ];
 
 const SHIP = [
-  { k:"debezium-cockroachdb", alias:["debezium","dbz","cdc","kafka","confluent"],
+  { k:"debezium-cockroachdb", alias:["debezium","dbz","cdc","kafka","confluent","envelope"],
     short:"Debezium source connector and JDBC sink, both on Confluent Hub",
     title:"Debezium connector and JDBC sink for CockroachDB",
-    body:`I wrote the Debezium connector for CockroachDB from the first line of code. The Debezium project adopted it as an official connector and it has since graduated out of incubating. I also built CockroachDB support into the Debezium JDBC sink, so changes stream into CockroachDB as well as out of it, and published both on Confluent Hub.`,
+    body:`I wrote the Debezium connector for CockroachDB from the first line of code. The Debezium project adopted it as an official connector and it has since graduated out of incubating. I also built CockroachDB support into the Debezium JDBC sink, so changes stream into CockroachDB as well as out of it, and published both on Confluent Hub. The connector is built on CockroachDB's enriched changefeed envelope, which started as a request I filed in 2024 so third party CDC tools could consume changefeeds. I worked it through with the product team and the CDC team shipped it in v25.2.`,
     tags:["java","kafka connect","cdc","changefeeds"],
     links:[["https://github.com/debezium/debezium-connector-cockroachdb","source"],
            ["https://debezium.io/documentation/reference/stable/connectors/cockroachdb.html","docs"],
@@ -172,7 +172,7 @@ const SHIP = [
   { k:"ai-coding-plugins", alias:["plugins","claude","cursor","copilot","codex","chatgpt","skills"],
     short:"CockroachDB plugins for Claude Code, Cursor, Copilot, Codex and ChatGPT",
     title:"AI coding plugins",
-    body:`I designed and built the CockroachDB plugins for Claude Code, Cursor, GitHub Copilot and OpenAI Codex. Developers can design schemas, write and tune queries and run clusters without leaving their coding assistant. Every plugin ships the shared CockroachDB agent skills library, where I wrote the application development and local cluster skills and hardened the full library to pass marketplace security review. OpenAI approved the ChatGPT plugin in October 2026.`,
+    body:`I designed and built the CockroachDB plugins for Claude Code, Cursor, GitHub Copilot and OpenAI Codex. Developers can design schemas, write and tune queries and run clusters without leaving their coding assistant. Every plugin ships the shared CockroachDB agent skills library, where I wrote the application development and local cluster skills and hardened the full library to pass marketplace security review. OpenAI approved the ChatGPT plugin in October 2026. Getting there also meant driving a set of Cockroach Cloud MCP features from customer feedback through engineering. Those are live now, they cleared the blockers for the Codex plugin, and every plugin and integration can use them.`,
     tags:["mcp","agent skills","typescript","go"],
     links:[["https://github.com/cockroachdb/claude-plugin","claude code"],
            ["https://github.com/cockroachdb/cursor-plugin","cursor"],
@@ -210,12 +210,14 @@ const SHIP = [
     tags:["multi region","langgraph","toxiproxy","haproxy"],
     links:[["https://demos.cockroachlabs.com/","demos.cockroachlabs.com"],
            ["https://github.com/viragtripathi/cockroach-chaos-demo","chaos cluster"]] },
-  { k:"ibm-platforms", alias:["ibm","power","linuxone","s390x","ppc64le","z","watsonx","lakehouse"],
-    short:"CockroachDB certified on IBM Power and IBM Cloud, validated on LinuxONE, a lakehouse path to watsonx.data",
-    title:"IBM Power, IBM Cloud, LinuxONE and watsonx.data",
-    body:`I shipped the CockroachDB certification on IBM Power Systems and IBM Cloud, announced at IBM's Announcement Day in May 2026, and drove the validation on IBM LinuxONE. I also validated a single CockroachDB cluster spanning IBM Z and x86 nodes, which surfaced a cross architecture bug in the vectorized engine that I filed upstream with a workaround. On the data side I built an open source pipeline from CockroachDB into IBM watsonx.data and Apache Iceberg, presented at IBM's Tech Acceleration Workshop, and wrote the IBM Community blog on running CockroachDB on LinuxONE.`,
+  { k:"ibm-platforms", alias:["ibm","power","linuxone","s390x","ppc64le","z","watsonx","lakehouse","oem"],
+    short:"spearheaded CockroachDB on IBM LinuxONE and Power, the groundwork behind the IBM OEM",
+    title:"IBM LinuxONE, IBM Power, IBM Cloud and watsonx.data",
+    body:`I spearheaded CockroachDB's IBM platform work end to end. It started with the first LinuxONE (s390x) validation, continued through official platform support and the IBM Power (ppc64le) port, and became the technical groundwork behind the OEM agreement IBM announced in October 2025. I then shipped the CockroachDB certification on IBM Power Systems and IBM Cloud, announced at IBM's Announcement Day in May 2026, and validated a single CockroachDB cluster spanning IBM Z and x86 nodes, which surfaced a cross architecture bug in the vectorized engine that I filed upstream with a workaround. The work has already produced closed business through IBM and a growing pipeline. On the data side I built an open source pipeline from CockroachDB into IBM watsonx.data and Apache Iceberg, presented at IBM's Tech Acceleration Workshop, and I have presented CockroachDB on IBM at IBM Think and IBM TechXchange. I wrote the IBM Community blog on running CockroachDB on LinuxONE, and IBM named me an IBM Champion.`,
     tags:["s390x","ppc64le","iceberg","mainframe modernization"],
-    links:[["https://community.ibm.com/community/user/blogs/virag-tripathi/2026/07/16/cockroachdb-on-ibm-linuxone-distributed-sql-for-ai","ibm community blog"],
+    links:[["https://www.cockroachlabs.com/blog/ibm-oems-cockroachdb/","ibm oem announcement"],
+           ["https://www.prnewswire.com/news-releases/cockroachdb-brings-distributed-sql-to-ibm-power-and-ibm-cloud-302770969.html","power and ibm cloud launch"],
+           ["https://community.ibm.com/community/user/blogs/virag-tripathi/2026/07/16/cockroachdb-on-ibm-linuxone-distributed-sql-for-ai","ibm community blog"],
            ["https://github.com/viragtripathi/cockroachdb-watsonx-data-pipeline","watsonx.data pipeline"]] },
   { k:"banko-ai", alias:["banko","rag"],
     short:"multi agent banking assistant on a single CockroachDB cluster",
@@ -234,7 +236,7 @@ const SHIP = [
   { k:"upstream", alias:["contrib","contributions","core","cockroach-core","sqlalchemy","cloud-mcp","issues","bugs","fineract","docs"],
     short:"cockroach core, sqlalchemy, fineract, docs, and the bugs I found along the way",
     title:"Upstream contributions and bugs found",
-    body:`Some work is a line in someone else's repo rather than a connector with my name on it. Platform enablement in CockroachDB core for IBM Z (s390x) and IBM Power (ppc64le), done with our engineering team. The sqlalchemy-cockroachdb dialect work that unblocked Airflow. Upstream tickets in Apache Fineract for running it on CockroachDB. CockroachDB product docs on changefeeds and the LangChain provider docs. Cockroach Cloud MCP features worked through with engineering from customer feedback. And the bugs that integration work shakes loose, a plan cache regression triggered by user defined functions, a COMMIT path that ignored statement timeouts during quorum loss, a SHOW PARTITIONS failure the PeerDB connector surfaced, vector index gaps on regional by row tables and a cross architecture endianness panic in the vectorized engine, several already fixed in point releases.`,
+    body:`Some work is a line in someone else's repo rather than a connector with my name on it. Platform enablement in CockroachDB core for IBM Z (s390x) and IBM Power (ppc64le), done with our engineering team. The sqlalchemy-cockroachdb dialect work that unblocked Airflow. Upstream tickets in Apache Fineract for running it on CockroachDB. CockroachDB product docs on changefeeds and the LangChain provider docs. The enriched changefeed envelope request that the CDC team shipped in v25.2. Cockroach Cloud MCP features driven from customer feedback and worked through with engineering, now live for every plugin and integration. And the bugs that integration work shakes loose, a plan cache regression triggered by user defined functions, a COMMIT path that ignored statement timeouts during quorum loss, a SHOW PARTITIONS failure the PeerDB connector surfaced, vector index gaps on regional by row tables and a cross architecture endianness panic in the vectorized engine, several already fixed in point releases.`,
     tags:["go","python","postgres compatibility","bug reports"],
     links:[["https://github.com/cockroachdb/cockroach","cockroachdb/cockroach"],
            ["https://github.com/cockroachdb/sqlalchemy-cockroachdb","sqlalchemy-cockroachdb"],
@@ -264,10 +266,10 @@ const SHIP = [
 ];
 
 const JOBS = [
-  ["Jan 2026","now","Principal, AI Ecosystems Engineer","Cockroach Labs",`Built CockroachDB's AI and ecosystem integrations from scratch. The role was created around that work. President's Club 2026.`],
-  ["Feb 2024","Dec 2025","Principal Solutions Architect","Cockroach Labs",`Technical lead on IBM, core banking, CDC and AI partnerships. Wrote the Debezium connector and led CockroachDB's validation on IBM LinuxONE and Power.`],
-  ["Nov 2020","Feb 2024","Principal Field Engineer","Redis",`Built Redis Connect, the CDC and data integration platform for Redis Enterprise, running in production at Fortune 100 customers. Wrote the Redis Enterprise Docker Extension, 50k+ installs on Docker Hub.`],
-  ["Aug 2018","Nov 2020","Solutions Architect","Redis",`President's Club in 2018 and 2020, three times overall at Redis, plus the Redis CEO Award. Hit 160% of ARR goal in 2020, with the most net new logos in the Americas.`],
+  ["Jan 2026","now","Principal, AI Ecosystems Engineer","Cockroach Labs",`Built CockroachDB's AI and ecosystem integrations from scratch. The role was created around that work. Shipped CockroachDB on IBM Power and IBM Cloud. President's Club 2026.`],
+  ["Feb 2024","Dec 2025","Principal Solutions Architect","Cockroach Labs",`Technical lead on IBM, core banking, CDC and AI partnerships. Spearheaded CockroachDB on IBM LinuxONE and Power, the groundwork behind the IBM OEM agreement, and wrote the Debezium connector.`],
+  ["Nov 2020","Feb 2024","Principal Field Engineer","Redis",`Built Redis Connect, the CDC and data integration platform for Redis Enterprise, running in production at Fortune 100 customers. Wrote the Redis Enterprise Docker Extension, 50k+ installs on Docker Hub. President's Club 2023.`],
+  ["Aug 2018","Nov 2020","Solutions Architect","Redis",`President's Club in 2018 and 2020 and the Redis CEO Award in 2020. Hit 160% of ARR goal in 2020, with the most net new logos in the Americas.`],
   ["Aug 2015","Aug 2018","Global Solutions Architect","TIBCO Software",""],
   ["Apr 2014","Aug 2015","Big Data Consultant","JetBlue Airways",""],
   ["Aug 2010","Apr 2014","Senior Specialty Developer","Delta Air Lines",""],
@@ -278,13 +280,14 @@ const JOBS = [
 const EDU = "B.Sc. in Mathematics and Physics, Deendayal Upadhyay Gorakhpur University";
 
 const WRITING = [
-  ["https://www.cockroachlabs.com/blog/cockroachdb-plugin-for-chatgpt-and-codex/","The CockroachDB plugin for ChatGPT and Codex, the launch blog","cockroachlabs.com"],
+  ["https://www.cockroachlabs.com/blog/cockroachdb-plugin-for-chatgpt-and-codex/","The CockroachDB plugin for ChatGPT and Codex, co-authored the launch blog","cockroachlabs.com"],
   ["https://medium.com/@mcp_toolbox/multi-source-reasoning-with-cockroachdb-and-google-cloud-databases-using-mcp-toolbox-64c39ea878f5","Cross cloud AI agents with CockroachDB and Google Cloud databases, written with the Google team","MCP Toolbox on Medium"],
   ["https://community.ibm.com/community/user/blogs/virag-tripathi/2026/07/16/cockroachdb-on-ibm-linuxone-distributed-sql-for-ai","CockroachDB on IBM LinuxONE, distributed SQL for AI","IBM Community"],
   ["https://medium.com/@virag.tripathi/building-agentic-ai-on-resilient-data-from-oltp-to-lakehouse-with-watsonx-cockroachdb-107426db91e0","Building agentic AI on resilient data, from OLTP to lakehouse with watsonx and CockroachDB","Medium"],
   ["https://medium.com/@virag.tripathi/from-vector-search-to-durable-ai-agents-langchain-langgraph-and-cockroachdb-be1321d6fb50","From vector search to durable AI agents with LangChain, LangGraph and CockroachDB","Medium"],
   ["https://medium.com/@virag.tripathi","Everything else, cloud native core banking with Apache Fineract, vector search, JDBC retries","Medium"],
   ["https://www.cockroachlabs.com/blog/resilient-genai-agentic-apps-intelligent-memory/","Presented Build Resilient GenAI and Agentic Apps with Intelligent Memory at AWS re:Invent 2025","talk"],
+  ["https://www.cockroachlabs.com/partners/ibm/","Presented CockroachDB on IBM platforms at IBM Think and IBM TechXchange","talks"],
   ["https://github.com/viragtripathi/cockroachdb-watsonx-data-pipeline","Presented the CockroachDB to watsonx.data lakehouse pipeline at IBM's Tech Acceleration Workshop, April 2026","talk"],
   ["https://cockroachdb-ai.devpost.com/","Judge for the CockroachDB and AWS hackathon on agentic memory, 600+ submissions","Devpost"]
 ];
@@ -390,7 +393,7 @@ const CMD = {
       ["kernel","distributed sql"],
       ["shell","go · java · python"],
       ["packages","debezium, langchain, mcp-toolbox, peerdb, airflow, claude-code, cursor, copilot, codex"],
-      ["awards","President's Club at Cockroach Labs, 3x at Redis, Redis CEO Award"],
+      ["awards","President's Club at Cockroach Labs, 3x at Redis, Redis CEO Award, IBM Champion"],
       ["languages","English, Hindi, Bhojpuri"],
       ["based","Tampa, FL"]
     ];
