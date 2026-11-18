@@ -138,7 +138,7 @@
 
 const ABOUT = [
   `I build the integrations that put CockroachDB inside the tools developers and data teams already use. I wrote CockroachDB's connectors for Debezium and ClickHouse, its LangChain integration, its Google MCP Toolbox integration and its plugins for Claude Code, Cursor, GitHub Copilot and OpenAI Codex.`,
-  `I started that work from scratch, and the role I hold now was created around it.`,
+  `I started that work from scratch, and the role I hold now was created around it. The code lives upstream across the cockroachdb, cockroachlabs, debezium, PeerDB and googleapis GitHub orgs, not just my own account, and two of my demos run live on demos.cockroachlabs.com.`,
   `Before Cockroach Labs I spent more than two decades in data integration, messaging and distributed systems at Redis, TIBCO, JetBlue, Delta Air Lines and Cingular Wireless. I still write the code myself, and I still think the best way to win a partner over is to build something real with them.`
 ];
 
@@ -189,9 +189,10 @@ const SHIP = [
   { k:"chaos-demo", alias:["chaos-demo","resilience"],
     short:"16 agents, one region outage, zero failed turns",
     title:"The chaos demo",
-    body:`A live resilience demo. 16 LangGraph agents kept working on CockroachDB through a simulated region outage, 1,759 agent turns with zero failures. My multi region chaos cluster is open source if you want to break one yourself. Or type chaos right here.`,
+    body:`A live resilience demo. 16 LangGraph agents kept working on CockroachDB through a simulated region outage, 1,759 agent turns with zero failures. It runs live on demos.cockroachlabs.com, and the multi region chaos cluster is open source if you want to break one yourself. Or type chaos right here.`,
     tags:["multi region","langgraph","toxiproxy","haproxy"],
-    links:[["https://github.com/viragtripathi/cockroach-chaos-demo","chaos cluster"]] },
+    links:[["https://demos.cockroachlabs.com/","demos.cockroachlabs.com"],
+           ["https://github.com/viragtripathi/cockroach-chaos-demo","chaos cluster"]] },
   { k:"ibm-platforms", alias:["ibm","power","linuxone","s390x","ppc64le","z"],
     short:"CockroachDB certified on IBM Power and IBM Cloud, validated on LinuxONE",
     title:"IBM Power, IBM Cloud and LinuxONE",
@@ -201,9 +202,10 @@ const SHIP = [
   { k:"banko-ai", alias:["banko","rag"],
     short:"multi agent banking assistant on a single CockroachDB cluster",
     title:"Banko AI",
-    body:`I rebuilt Banko AI, a multi agent banking assistant that runs RAG, agents and memory on a single CockroachDB cluster, and packaged it for PyPI and Docker.`,
+    body:`I rebuilt Banko AI, a multi agent banking assistant that runs RAG, agents and memory on a single CockroachDB cluster, and packaged it for PyPI and Docker. It also runs live on demos.cockroachlabs.com.`,
     tags:["python","rag","agents","vector search"],
-    links:[["https://github.com/cockroachlabs-field/banko-ai-assistant","source"]] },
+    links:[["https://github.com/cockroachlabs-field/banko-ai-assistant","source"],
+           ["https://demos.cockroachlabs.com/","demos.cockroachlabs.com"]] },
   { k:"vectordbbench", alias:["vdbb","benchmark","bench"],
     short:"CockroachDB in the open source vector database benchmark",
     title:"VectorDBBench",
@@ -359,7 +361,7 @@ const CMD = {
     SHIP.filter(s => all || !s.hidden).forEach(s => {
       print(`<span class="d">${s.hidden ? "d---------" : "drwxr-xr-x"}</span>  ${C("cat " + s.k, s.k.padEnd(22," "))}  <span class="d">${esc(s.short)}</span>`);
     });
-    gap(); print(`<span class="d">type cat &lt;name&gt; or click one.</span>`);
+    gap(); print(`<span class="d">type cat &lt;name&gt; or click one. two of these run live on ${A("https://demos.cockroachlabs.com/","demos.cockroachlabs.com")}.</span>`);
   },
   cat(args){
     if(!args.length){ print(`<span class="r">cat: missing file name.</span> try ${C("cat debezium")}`); return; }
@@ -393,6 +395,9 @@ const CMD = {
   contact(){
     print(`<div class="grid2">${CONTACT.map(([k,u,t]) => `<span class="y">${k}</span><span>${A(u,t)}</span>`).join("")}</div>`);
   },
+  demos(){
+    print(`two of my demos run live on ${A("https://demos.cockroachlabs.com/","demos.cockroachlabs.com")}, the chaos demo and Banko AI. or type ${C("chaos")} for the in-browser version.`);
+  },
   async chaos(){
     busy = true;
     print(`<span class="d">simulation running in your browser. the numbers mirror my live demo.</span>`);
@@ -415,6 +420,7 @@ const CMD = {
       await sleep(16);
     }
     print(`<span class="g">✓ ${total.toLocaleString()} turns, 0 failed. the agents never noticed.</span>`);
+    print(`<span class="d">the real one runs on ${A("https://demos.cockroachlabs.com/","demos.cockroachlabs.com")}.</span>`);
     busy = false;
   },
   matrix(){
