@@ -187,6 +187,12 @@ const SHIP = [
     links:[["https://github.com/PeerDB-io/peerdb","source"],
            ["https://docs.peerdb.io/connect/cockroachdb","setup guide"],
            ["https://github.com/viragtripathi/peerdb-cockroachdb-examples","examples"]] },
+  { k:"airflow-cockroachdb", alias:["airflow","apache-airflow","airflow-patch","airflow-poc"],
+    short:"Airflow support for CockroachDB, the compatibility patch",
+    title:"Apache Airflow on CockroachDB",
+    body:`I built Airflow support for CockroachDB. The Airflow project does not carry CockroachDB compatibility in core, so I wrote and maintain the patch that lets the standard Airflow release run on CockroachDB, handling the retry behavior that otherwise crashes the scheduler. Validated on a single node and on a five node, three region cluster with two schedulers under load. The patch is headed to the cockroachdb GitHub org.`,
+    tags:["python","workflow orchestration","postgres compatibility"],
+    links:[["https://github.com/viragtripathi/cockroachdb-airflow-poc","source"]] },
   { k:"chaos-demo", alias:["chaos-demo","resilience"],
     short:"16 agents, one region outage, zero failed turns",
     title:"The chaos demo",
@@ -213,24 +219,22 @@ const SHIP = [
     body:`I added CockroachDB to VectorDBBench, the open source vector database benchmark.`,
     tags:["python","vector search","benchmarks"],
     links:[["https://github.com/zilliztech/VectorDBBench","source"]] },
-  { k:"upstream", alias:["contrib","contributions","core","cockroach-core","sqlalchemy","airflow-core","mcp-server"],
-    short:"smaller work in cockroach core, sqlalchemy, airflow and the mcp server",
+  { k:"upstream", alias:["contrib","contributions","core","cockroach-core","sqlalchemy","mcp-server"],
+    short:"smaller work in cockroach core, sqlalchemy and the mcp server",
     title:"Upstream contributions",
-    body:`Some work is a line in someone else's repo rather than a connector with my name on it. Platform enablement in CockroachDB core for IBM Z (s390x) and IBM Power (ppc64le), done with our engineering team. The sqlalchemy-cockroachdb dialect work that unblocked Airflow. Postgres compatibility PRs in Apache Airflow core, still working through review. And work on the official CockroachDB MCP server that connects agents to the database.`,
+    body:`Some work is a line in someone else's repo rather than a connector with my name on it. Platform enablement in CockroachDB core for IBM Z (s390x) and IBM Power (ppc64le), done with our engineering team. The sqlalchemy-cockroachdb dialect work that unblocked Airflow. And work on the official CockroachDB MCP server that connects agents to the database.`,
     tags:["go","python","postgres compatibility"],
     links:[["https://github.com/cockroachdb/cockroach","cockroachdb/cockroach"],
            ["https://github.com/cockroachdb/sqlalchemy-cockroachdb","sqlalchemy-cockroachdb"],
-           ["https://github.com/apache/airflow","apache/airflow"],
            ["https://github.com/cockroachdb/cockroachdb-mcp-server","mcp server"]] },
-  { k:"tools", alias:["crdb-dump","jdbc","analyzer","airflow"],
+  { k:"tools", alias:["crdb-dump","jdbc","analyzer"],
     short:"small open source tools I keep using",
     title:"Tools I built and maintain",
-    body:`crdb-dump exports and imports schema and data as SQL, JSON, YAML or CSV. The JDBC wrapper retries transient errors with no application code changes. The analyzer runs diagnostics and performance checks. The Airflow POC shows Airflow running on CockroachDB.`,
+    body:`crdb-dump exports and imports schema and data as SQL, JSON, YAML or CSV. The JDBC wrapper retries transient errors with no application code changes. The analyzer runs diagnostics and performance checks.`,
     tags:["go","java","python"],
     links:[["https://github.com/viragtripathi/crdb-dump","crdb-dump"],
            ["https://github.com/viragtripathi/cockroachdb-jdbc-wrapper","jdbc-wrapper"],
-           ["https://github.com/viragtripathi/cockroachdb-analyzer","analyzer"],
-           ["https://github.com/viragtripathi/cockroachdb-airflow-poc","airflow-poc"]] },
+           ["https://github.com/viragtripathi/cockroachdb-analyzer","analyzer"]] },
   { k:".internal", alias:["internal","secret","classified"], hidden:true,
     short:"not public yet",
     title:"Permission denied",
@@ -359,7 +363,7 @@ const CMD = {
       ["uptime","26 years shipping software"],
       ["kernel","distributed sql"],
       ["shell","go · java · python"],
-      ["packages","debezium, langchain, mcp-toolbox, peerdb, claude-code, cursor, copilot, codex"],
+      ["packages","debezium, langchain, mcp-toolbox, peerdb, airflow, claude-code, cursor, copilot, codex"],
       ["languages","English, Hindi, Bhojpuri"],
       ["based","Tampa, FL"]
     ];
@@ -568,7 +572,7 @@ async function boot(){
   screen.addEventListener("click", skip, { once:true });
   const units = [
     "debezium-cockroachdb.service","langchain-cockroachdb.service","mcp-toolbox-cockroachdb.service",
-    "peerdb-cockroachdb.service","ai-coding-plugins.target","ibm-platforms.target"
+    "peerdb-cockroachdb.service","airflow-cockroachdb.service","ai-coding-plugins.target","ibm-platforms.target"
   ];
   for(const u of units){ print(`<span class="d">[</span><span class="g">  OK  </span><span class="d">]</span> Started <span class="b">${u}</span>`); await sleep(120); }
   print(`<span class="d">[</span><span class="g">  OK  </span><span class="d">]</span> Reached target <span class="b">ecosystem.target</span>`);
