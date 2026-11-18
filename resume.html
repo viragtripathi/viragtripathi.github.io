@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Virag Tripathi · Resume</title>
+<meta name="description" content="Resume of Virag Tripathi, Principal, AI Ecosystems Engineer at Cockroach Labs." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#16202e; --dim:#5a6572; --line:#d8dde4; --accent:#0e6e3c; --link:#0a5aa3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:#e9e6df}
+  body{font-family:'Source Sans 3','Segoe UI',system-ui,sans-serif;color:var(--ink);font-size:10.6pt;line-height:1.45}
+  .page{max-width:8.5in;margin:24px auto;background:#fff;padding:0.55in 0.6in;box-shadow:0 10px 40px rgba(0,0,0,.12)}
+  a{color:var(--link);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .mono{font-family:'JetBrains Mono',monospace}
+
+  /* toolbar, screen only */
+  .toolbar{max-width:8.5in;margin:16px auto 0;display:flex;gap:10px;justify-content:flex-end;padding:0 4px}
+  .toolbar a,.toolbar button{font-family:'JetBrains Mono',monospace;font-size:12px;border:1px solid #b9b4a9;background:#fff;color:var(--ink);border-radius:6px;padding:6px 12px;cursor:pointer}
+  .toolbar a:hover,.toolbar button:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+
+  header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:2.5px solid var(--ink);padding-bottom:10px;margin-bottom:14px}
+  h1{font-size:23pt;line-height:1.05;letter-spacing:-.01em}
+  .role{font-family:'JetBrains Mono',monospace;font-size:10pt;color:var(--accent);font-weight:600;margin-top:4px}
+  .contact{text-align:right;font-size:9pt;color:var(--dim);line-height:1.55;white-space:nowrap}
+
+  h2{font-family:'JetBrains Mono',monospace;font-size:9pt;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+     border-bottom:1px solid var(--line);padding-bottom:3px;margin:14px 0 8px}
+  .summary{font-size:10.8pt}
+
+  .job{margin-bottom:10px;break-inside:avoid}
+  .jobhead{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .jobhead .t{font-weight:700;font-size:11pt}
+  .jobhead .t .org{font-weight:600;color:var(--dim)}
+  .jobhead .dates{font-family:'JetBrains Mono',monospace;font-size:8.5pt;color:var(--dim);white-space:nowrap}
+  ul{margin:4px 0 0 0;padding-left:16px}
+  li{margin-bottom:3px}
+  li::marker{color:var(--accent)}
+
+  .earlier{display:grid;grid-template-columns:1fr auto;row-gap:2px;column-gap:14px;font-size:9.8pt}
+  .earlier .d{font-family:'JetBrains Mono',monospace;font-size:8.5pt;color:var(--dim);white-space:nowrap}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+  .kv{display:grid;grid-template-columns:92px 1fr;gap:10px;font-size:9.8pt;margin-bottom:3px}
+  .kv b{font-family:'JetBrains Mono',monospace;font-size:8.5pt;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding-top:2px}
+
+  .oss{font-size:9.9pt}
+  .oss b{font-weight:700}
+
+  .pb{break-before:page}
+
+  @media print{
+    html{background:#fff}
+    .toolbar{display:none}
+    .page{margin:0;max-width:none;box-shadow:none;padding:0}
+    a{color:var(--ink)}
+    @page{size:letter;margin:0.55in 0.6in}
+  }
+  @media(max-width:700px){
+    .page{padding:24px 18px;margin:12px}
+    header{flex-direction:column;align-items:flex-start}
+    .contact{text-align:left;white-space:normal}
+    .cols{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a href="index.html">← back to terminal</a>
+  <button onclick="window.print()">print / save as PDF</button>
+</div>
+
+<div class="page">
+
+<header>
+  <div>
+    <h1>Virag Tripathi</h1>
+    <div class="role">Principal, AI Ecosystems Engineer · Cockroach Labs</div>
+  </div>
+  <div class="contact">
+    Tampa, FL<br>
+    <a href="mailto:virag.tripathi@gmail.com">virag.tripathi@gmail.com</a><br>
+    <a href="https://www.linkedin.com/in/virag">linkedin.com/in/virag</a> · <a href="https://github.com/viragtripathi">github.com/viragtripathi</a><br>
+    <a href="https://viragtripathi.github.io">viragtripathi.github.io</a>
+  </div>
+</header>
+
+<h2>Summary</h2>
+<p class="summary">
+Engineer with 26 years in distributed systems, data integration and messaging, the last decade in the field at database companies. At Cockroach Labs I built the AI and developer ecosystem integrations from scratch. I wrote CockroachDB's connectors for Debezium and ClickHouse, its LangChain integration, its Google MCP Toolbox integration and its plugins for Claude Code, Cursor, GitHub Copilot and OpenAI Codex, and the company created my current role around that work. I still write the code myself.
+</p>
+
+<h2>Experience</h2>
+
+<div class="job">
+  <div class="jobhead">
+    <span class="t">Principal, AI Ecosystems Engineer <span class="org">· Cockroach Labs</span></span>
+    <span class="dates">Jan 2026 – present</span>
+  </div>
+  <ul>
+    <li>Wrote the Debezium connector for CockroachDB from the first line of code. The Debezium project adopted it as an official connector and it graduated out of incubating. Built CockroachDB support into the Debezium JDBC sink and published both source and sink on Confluent Hub.</li>
+    <li>Designed, wrote and maintain langchain-cockroachdb, the official CockroachDB integration for LangChain and LangGraph. Vector search, hybrid search, chat history, checkpointers and long term agent memory, listed in the official LangChain docs.</li>
+    <li>Designed and built the CockroachDB plugins for Claude Code, Cursor, GitHub Copilot and OpenAI Codex, so developers can design schemas, tune queries and run clusters inside their coding assistant. OpenAI approved the ChatGPT plugin in October 2026. Wrote application development and local cluster skills in the shared CockroachDB agent skills library the plugins ship, and hardened it to pass marketplace security review.</li>
+    <li>Wrote the CockroachDB integration for Google's MCP Toolbox for Databases and worked with the Google team to land it, putting CockroachDB alongside Google Cloud databases for AI agents.</li>
+    <li>Wrote the native CockroachDB connector for PeerDB, the CDC engine behind ClickHouse, streaming changes from CockroachDB into ClickHouse for real time analytics.</li>
+    <li>Shipped the CockroachDB certification on IBM Power Systems and IBM Cloud, announced at IBM's Announcement Day in May 2026.</li>
+    <li>Built a live resilience demo in which 16 LangGraph agents ran through a simulated region outage on CockroachDB, 1,759 agent turns with zero failures. Added CockroachDB to VectorDBBench, the open source vector database benchmark.</li>
+    <li>Took an internal real time voice AI coaching app from prototype to production on Google Cloud and contribute to an adaptive long term memory system for AI agents, both running on CockroachDB.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="jobhead">
+    <span class="t">Principal Solutions Architect <span class="org">· Cockroach Labs</span></span>
+    <span class="dates">Feb 2024 – Dec 2025</span>
+  </div>
+  <ul>
+    <li>Technical lead on partnerships across IBM, core banking, CDC and AI.</li>
+    <li>Technical lead on bringing a leading core banking platform to CockroachDB from the first engagement, working through the proof of concept and database blockers with their engineering team.</li>
+    <li>Drove CockroachDB's validation on IBM LinuxONE (s390x) and IBM Power (ppc64le) with engineering, from early testing through official platform support, and wrote the IBM Community blog on running CockroachDB on LinuxONE.</li>
+    <li>Built CDC paths into and out of CockroachDB with Debezium, Striim and IBM replication tooling, and designed an open source OLTP to lakehouse blueprint with IBM watsonx.data and Apache Iceberg.</li>
+    <li>Rebuilt Banko AI, a multi agent banking assistant running RAG, agents and memory on one CockroachDB cluster, packaged for PyPI and Docker.</li>
+    <li>Published open source field tools including crdb-dump, a diagnostics analyzer and a JDBC wrapper that retries transient errors with no application changes.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="jobhead">
+    <span class="t">Principal Field Engineer <span class="org">· Redis</span></span>
+    <span class="dates">Nov 2020 – Feb 2024</span>
+  </div>
+  <ul>
+    <li>Owned the data integration and messaging domain in the field, driving Redis Connect and the CDC ecosystem around it with enterprise customers.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="jobhead">
+    <span class="t">Solutions Architect <span class="org">· Redis</span></span>
+    <span class="dates">Aug 2018 – Nov 2020</span>
+  </div>
+  <ul>
+    <li>President's Club in 2018 and 2020. Reached 160% of ARR goal in 2020 and 110% in 2018, with the most net new logos in the Americas, owning multi billion dollar target accounts in the Southeast.</li>
+    <li>Architected Redis data platforms, built public proof of concept and webinar demos, and guided multi cloud HA and DR strategies across GCP, AWS, Azure and on premise.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="jobhead"><span class="t">Earlier roles</span><span class="dates">2000 – 2018</span></div>
+  <div class="earlier" style="margin-top:4px">
+    <span>Global Solutions Architect · TIBCO Software</span><span class="d">2015 – 2018</span>
+    <span>Big Data Consultant · JetBlue Airways</span><span class="d">2014 – 2015</span>
+    <span>Senior Specialty Developer · Delta Air Lines</span><span class="d">2010 – 2014</span>
+    <span>Senior Consultant, Professional Services · TIBCO Software</span><span class="d">2008 – 2010</span>
+    <span>Senior Developer · Delta Technology</span><span class="d">2003 – 2008</span>
+    <span>Senior Developer · Cingular Wireless</span><span class="d">2000 – 2003</span>
+  </div>
+</div>
+
+<h2>Selected open source</h2>
+<p class="oss">
+<b>Debezium</b> connector and JDBC sink for CockroachDB, on Confluent Hub · <b>langchain-cockroachdb</b> on PyPI · <b>PeerDB</b> native CockroachDB connector · <b>Google MCP Toolbox</b> CockroachDB integration · <b>CockroachDB plugins</b> for Claude Code, Cursor, Copilot, Codex and ChatGPT · <b>VectorDBBench</b> CockroachDB support · <b>crdb-dump</b>, <b>cockroachdb-analyzer</b>, <b>cockroachdb-jdbc-wrapper</b> and a multi region <b>chaos demo</b> at <a href="https://github.com/viragtripathi">github.com/viragtripathi</a>
+</p>
+
+<h2>Writing and community</h2>
+<p class="oss">
+IBM Community blog on CockroachDB and IBM LinuxONE, which earned the IBM Z and LinuxONE Community Contributor badge · Medium articles on agentic AI with watsonx and CockroachDB, MCP Toolbox, vector search and durable agents with LangChain and LangGraph, at <a href="https://medium.com/@virag.tripathi">medium.com/@virag.tripathi</a>
+</p>
+
+<h2>Skills</h2>
+<div class="cols">
+  <div>
+    <div class="kv"><b>Languages</b><span>Go, Java, Python, SQL, TypeScript</span></div>
+    <div class="kv"><b>AI</b><span>MCP, agent skills, LangChain and LangGraph, RAG, vector and hybrid search, agent memory</span></div>
+    <div class="kv"><b>Data</b><span>CockroachDB, Postgres, Redis, Kafka, Debezium, ClickHouse, CDC and changefeeds</span></div>
+  </div>
+  <div>
+    <div class="kv"><b>Platforms</b><span>GCP, AWS, Azure, Kubernetes, Docker, IBM LinuxONE (s390x), IBM Power (ppc64le)</span></div>
+    <div class="kv"><b>Practice</b><span>Distributed systems, messaging and ETL, multi region HA and DR, benchmarking, partner engineering</span></div>
+  </div>
+</div>
+
+<h2>Education</h2>
+<div class="cols">
+  <div class="kv"><b>Degree</b><span>B.Sc. Mathematics and Physics, Deendayal Upadhyay Gorakhpur University</span></div>
+  <div class="kv"><b>Spoken</b><span>English, Hindi, Bhojpuri</span></div>
+</div>
+
+</div>
+</body>
+</html>
