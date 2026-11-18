@@ -170,6 +170,7 @@ const SHIP = [
            ["https://github.com/cockroachdb/copilot-plugin","copilot"],
            ["https://github.com/cockroachdb/codex-plugin","codex"],
            ["https://chatgpt.com/plugins/plugin_asdk_app_6ae160c3d9e48191aaeffd03cc5ef09d","chatgpt"],
+           ["https://www.cockroachlabs.com/blog/cockroachdb-plugin-for-chatgpt-and-codex/","launch blog"],
            ["https://github.com/cockroachlabs/cockroachdb-skills","skills library"]] },
   { k:"mcp-toolbox", alias:["mcp","google","toolbox","genai-toolbox"],
     short:"CockroachDB in Google's MCP Toolbox for Databases",
@@ -212,6 +213,15 @@ const SHIP = [
     body:`I added CockroachDB to VectorDBBench, the open source vector database benchmark.`,
     tags:["python","vector search","benchmarks"],
     links:[["https://github.com/zilliztech/VectorDBBench","source"]] },
+  { k:"upstream", alias:["contrib","contributions","core","cockroach-core","sqlalchemy","airflow-core","mcp-server"],
+    short:"smaller work in cockroach core, sqlalchemy, airflow and the mcp server",
+    title:"Upstream contributions",
+    body:`Some work is a line in someone else's repo rather than a connector with my name on it. Platform enablement in CockroachDB core for IBM Z (s390x) and IBM Power (ppc64le), done with our engineering team. The sqlalchemy-cockroachdb dialect work that unblocked Airflow. Postgres compatibility PRs in Apache Airflow core, still working through review. And work on the official CockroachDB MCP server that connects agents to the database.`,
+    tags:["go","python","postgres compatibility"],
+    links:[["https://github.com/cockroachdb/cockroach","cockroachdb/cockroach"],
+           ["https://github.com/cockroachdb/sqlalchemy-cockroachdb","sqlalchemy-cockroachdb"],
+           ["https://github.com/apache/airflow","apache/airflow"],
+           ["https://github.com/cockroachdb/cockroachdb-mcp-server","mcp server"]] },
   { k:"tools", alias:["crdb-dump","jdbc","analyzer","airflow"],
     short:"small open source tools I keep using",
     title:"Tools I built and maintain",
@@ -243,6 +253,7 @@ const JOBS = [
 const EDU = "B.Sc. in Mathematics and Physics, Deendayal Upadhyay Gorakhpur University";
 
 const WRITING = [
+  ["https://www.cockroachlabs.com/blog/cockroachdb-plugin-for-chatgpt-and-codex/","The CockroachDB plugin for ChatGPT and Codex, the launch blog","cockroachlabs.com"],
   ["https://community.ibm.com/community/user/blogs/virag-tripathi/2026/07/16/cockroachdb-on-ibm-linuxone-distributed-sql-for-ai","CockroachDB on IBM LinuxONE, distributed SQL for AI","IBM Community"],
   ["https://medium.com/@virag.tripathi/building-agentic-ai-on-resilient-data-from-oltp-to-lakehouse-with-watsonx-cockroachdb-107426db91e0","Building agentic AI on resilient data, from OLTP to lakehouse with watsonx and CockroachDB","Medium"],
   ["https://medium.com/@virag.tripathi","Everything else, from MCP Toolbox to durable agents with LangGraph","Medium"]
