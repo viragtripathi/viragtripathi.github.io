@@ -58,6 +58,7 @@
 <a href="#problem">The missing connection</a>
 <a href="#built">What I built</a>
 <a href="#engineering">The engineering behind the integration</a>
+<a href="#try-it">Try it yourself</a>
 <a href="#result">What changed</a>
 </aside>
 <div class="prose">
@@ -95,6 +96,15 @@
 <p>The work crossed two codebases and their contracts: CockroachDB's changefeed representation and Debezium's connector ecosystem. Getting the envelope supported in the database was a prerequisite to building the connector on top of it.</p>
 <p>I also published examples so developers could move from reading the documentation to running the integration.</p>
 </section>
+<section id="try-it">
+<h2>Try it yourself</h2>
+<p>Start with a working CDC pipeline. My Debezium examples include Docker Compose setups for replication between CockroachDB clusters, migrations from PostgreSQL and Oracle, and streaming changes to Iceberg or Neo4j.</p>
+<p>Each demo includes a script that starts the services, drives sample changes, and checks the results. Start with the CockroachDB-to-CockroachDB demo, then adapt it to your own evaluation.</p>
+<p>
+<a class="button" href="https://github.com/viragtripathi/debezium-cockroachdb-examples">Run the CDC demos <span aria-hidden="true">↗</span>
+</a>
+</p>
+</section>
 <section id="result">
 <h2>What changed</h2>
 <div class="outcome">
@@ -108,7 +118,7 @@
 <a href="https://debezium.io/documentation/reference/stable/connectors/cockroachdb.html">docs ↗</a>
 <a href="https://www.confluent.io/hub/cockroachdb/debezium-connector-cockroachdb">confluent hub, source ↗</a>
 <a href="https://www.confluent.io/hub/cockroachdb/debezium-connector-jdbc">confluent hub, jdbc sink ↗</a>
-<a href="https://github.com/viragtripathi/debezium-cockroachdb-examples">examples ↗</a>
+<a href="https://github.com/viragtripathi/debezium-cockroachdb-examples">Run the CDC demos ↗</a>
 </div>
 </div>
 </div>
