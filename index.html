@@ -175,10 +175,11 @@ const SHIP = [
   { k:"mcp-toolbox", alias:["mcp","google","toolbox","genai-toolbox"],
     short:"CockroachDB in Google's MCP Toolbox for Databases",
     title:"Google MCP Toolbox for Databases",
-    body:`I wrote the CockroachDB integration for Google's MCP Toolbox for Databases and worked with the Google team to get it merged. AI agents can now work with CockroachDB alongside Google Cloud databases through one toolbox.`,
+    body:`I wrote the CockroachDB integration for Google's MCP Toolbox for Databases and worked with the Google team to get it merged. AI agents can now work with CockroachDB alongside Google Cloud databases through one toolbox. I also wrote the MCP Toolbox blog on cross cloud agents with the Google team.`,
     tags:["go","mcp","google cloud"],
     links:[["https://mcp-toolbox.dev/integrations/cockroachdb/source/","docs"],
-           ["https://github.com/googleapis/genai-toolbox","source"]] },
+           ["https://github.com/googleapis/genai-toolbox","source"],
+           ["https://medium.com/@mcp_toolbox/multi-source-reasoning-with-cockroachdb-and-google-cloud-databases-using-mcp-toolbox-64c39ea878f5","blog"]] },
   { k:"peerdb-clickhouse", alias:["peerdb","clickhouse","ch"],
     short:"native CockroachDB connector for PeerDB, streaming into ClickHouse",
     title:"CockroachDB to ClickHouse with PeerDB",
@@ -209,10 +210,11 @@ const SHIP = [
   { k:"banko-ai", alias:["banko","rag"],
     short:"multi agent banking assistant on a single CockroachDB cluster",
     title:"Banko AI",
-    body:`I rebuilt Banko AI, a multi agent banking assistant that runs RAG, agents and memory on a single CockroachDB cluster, and packaged it for PyPI and Docker. It also runs live on demos.cockroachlabs.com.`,
+    body:`I rebuilt Banko AI, a multi agent banking assistant that runs RAG, agents and memory on a single CockroachDB cluster, and packaged it for PyPI and Docker. It also runs live on demos.cockroachlabs.com, and I presented the resilient agentic AI story built on this work at AWS re:Invent 2025.`,
     tags:["python","rag","agents","vector search"],
     links:[["https://github.com/cockroachlabs-field/banko-ai-assistant","source"],
-           ["https://demos.cockroachlabs.com/","demos.cockroachlabs.com"]] },
+           ["https://demos.cockroachlabs.com/","demos.cockroachlabs.com"],
+           ["https://www.cockroachlabs.com/blog/resilient-genai-agentic-apps-intelligent-memory/","re:invent recap"]] },
   { k:"vectordbbench", alias:["vdbb","benchmark","bench"],
     short:"CockroachDB in the open source vector database benchmark",
     title:"VectorDBBench",
@@ -257,9 +259,12 @@ const EDU = "B.Sc. in Mathematics and Physics, Deendayal Upadhyay Gorakhpur Univ
 
 const WRITING = [
   ["https://www.cockroachlabs.com/blog/cockroachdb-plugin-for-chatgpt-and-codex/","The CockroachDB plugin for ChatGPT and Codex, the launch blog","cockroachlabs.com"],
+  ["https://medium.com/@mcp_toolbox/multi-source-reasoning-with-cockroachdb-and-google-cloud-databases-using-mcp-toolbox-64c39ea878f5","Cross cloud AI agents with CockroachDB and Google Cloud databases, written with the Google team","MCP Toolbox on Medium"],
   ["https://community.ibm.com/community/user/blogs/virag-tripathi/2026/07/16/cockroachdb-on-ibm-linuxone-distributed-sql-for-ai","CockroachDB on IBM LinuxONE, distributed SQL for AI","IBM Community"],
   ["https://medium.com/@virag.tripathi/building-agentic-ai-on-resilient-data-from-oltp-to-lakehouse-with-watsonx-cockroachdb-107426db91e0","Building agentic AI on resilient data, from OLTP to lakehouse with watsonx and CockroachDB","Medium"],
-  ["https://medium.com/@virag.tripathi","Everything else, from MCP Toolbox to durable agents with LangGraph","Medium"]
+  ["https://medium.com/@virag.tripathi","Everything else, from vector search to durable agents with LangGraph","Medium"],
+  ["https://www.cockroachlabs.com/blog/resilient-genai-agentic-apps-intelligent-memory/","Presented Build Resilient GenAI and Agentic Apps with Intelligent Memory at AWS re:Invent 2025","talk"],
+  ["https://cockroachdb-ai.devpost.com/","Judge for the CockroachDB and AWS hackathon on agentic memory, 600+ submissions","Devpost"]
 ];
 
 const CONTACT = [
@@ -326,7 +331,7 @@ const HELP = [
   ["cat <name>","details on one project, try cat debezium"],
   ["open <name>","open a project's main link"],
   ["experience","git log of my career"],
-  ["writing","blogs and articles"],
+  ["writing","blogs, talks and community"],
   ["resume","printable resume"],
   ["contact","how to reach me"],
   ["chaos","kill a region and watch the agents keep going"],
@@ -550,7 +555,7 @@ function buildGui(){
     <h2>Experience</h2>
     ${JOBS.map(([f,t,r,o,n]) => `<div class="item"><h3>${esc(r)}, ${esc(o)}</h3><div class="meta">${f} to ${t}</div>${n ? `<p>${esc(n)}</p>` : ""}</div>`).join("")}
     <div class="item"><h3>Education</h3><p>${esc(EDU)}</p></div>
-    <h2>Writing</h2>
+    <h2>Writing, talks and community</h2>
     ${WRITING.map(([u,t,w]) => `<div class="item">${A(u,t)} <span class="meta">${esc(w)}</span></div>`).join("")}
   </div>`;
 }
