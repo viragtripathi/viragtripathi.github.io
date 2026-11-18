@@ -103,7 +103,7 @@
 <div class="window" id="win">
   <div class="bar">
     <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-    <span class="title">virag@cockroachlabs: ~</span>
+    <span class="title">virag@prod: ~</span>
     <span class="actions">
       <button id="guiBtn" type="button" title="Plain page view">gui view</button>
       <button id="themeBtn" type="button" title="Switch theme">theme</button>
@@ -112,7 +112,7 @@
   <div id="screen" role="log" aria-live="polite">
     <div id="out"></div>
     <div class="line" id="inputLine">
-      <span class="ps1"><span class="u">virag</span><span class="d">@</span><span class="h">cockroachlabs</span><span class="d">:</span><span class="p">~</span><span class="d">$</span></span>
+      <span class="ps1"><span class="u">virag</span><span class="d">@</span><span class="h">prod</span><span class="d">:</span><span class="p">~</span><span class="d">$</span></span>
       <input id="cmd" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Type a command, or type help" />
     </div>
   </div>
@@ -351,7 +351,7 @@ const CMD = {
       ["based","Tampa, FL"]
     ];
     const sw = ["--red","--amber","--green","--cyan","--violet","--fg"].map(v => `<span class="sw" style="background:var(${v})"></span>`).join("");
-    print(`<div class="neo"><pre>${esc(art)}</pre><div><span class="u">virag</span><span class="d">@</span><span class="h">cockroachlabs</span>\n<span class="d">${"-".repeat(19)}</span>\n${rows.map(([k,v]) => `<span class="y">${k.padEnd(10," ")}</span>${esc(v)}`).join("\n")}\n\n${sw}</div></div>`);
+    print(`<div class="neo"><pre>${esc(art)}</pre><div><span class="u">virag</span><span class="d">@</span><span class="h">prod</span>\n<span class="d">${"-".repeat(10)}</span>\n${rows.map(([k,v]) => `<span class="y">${k.padEnd(10," ")}</span>${esc(v)}`).join("\n")}\n\n${sw}</div></div>`);
   },
   ls(args){
     const all = args.includes("-a") || args.includes("-la") || args.includes("-al");
