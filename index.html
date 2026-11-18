@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Virag Tripathi · Principal, AI Ecosystems Engineer</title>
 <meta name="description" content="Principal, AI Ecosystems Engineer at Cockroach Labs. I wrote CockroachDB's integrations for Debezium, ClickHouse, LangChain, Google MCP Toolbox, Claude Code, Cursor, GitHub Copilot and OpenAI Codex." />
 <meta property="og:title" content="Virag Tripathi · Principal, AI Ecosystems Engineer" />
@@ -38,7 +38,8 @@
   a{color:var(--cyan);text-decoration:none;border-bottom:1px dotted currentColor;transition:color .15s}
   a:hover{color:var(--green)}
 
-  .window{position:relative;width:100%;max-width:1000px;height:calc(100vh - 48px);background:var(--win);border:1px solid var(--line);border-radius:12px;
+  /* dvh keeps the window inside the visible viewport on iOS Safari, where 100vh overshoots behind the toolbars */
+  .window{position:relative;width:100%;max-width:1000px;height:calc(100vh - 48px);height:calc(100dvh - 48px);background:var(--win);border:1px solid var(--line);border-radius:12px;
     display:flex;flex-direction:column;overflow:hidden;z-index:1;
     box-shadow:0 30px 80px rgba(0,0,0,.35),0 0 60px var(--glow);
     animation:powerOn .5s ease both}
@@ -46,17 +47,17 @@
   .window::after{content:"";pointer-events:none;position:absolute;inset:0;z-index:6;border-radius:12px;
     background:repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0 1px,transparent 1px 3px)}
   html[data-theme="light"] .window::after{background:repeating-linear-gradient(0deg,rgba(0,0,0,.015) 0 1px,transparent 1px 3px)}
-  .bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bar);border-bottom:1px solid var(--line);user-select:none}
+  .bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bar);border-bottom:1px solid var(--line);user-select:none;flex:none}
   .dots{display:flex;gap:7px}
   .dots i{width:12px;height:12px;border-radius:50%;display:block;background:#ff5f57;transition:transform .15s}
   .dots i:nth-child(2){background:#febc2e}.dots i:nth-child(3){background:#28c840}
   .dots:hover i{transform:scale(1.12)}
   .title{flex:1;text-align:center;color:var(--dim);font-size:12.5px}
-  .actions{display:flex;gap:8px}
+  .actions{display:flex;gap:8px;margin-left:auto}
   .actions button{font:inherit;font-size:12px;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:6px;padding:3px 9px;cursor:pointer;transition:.15s}
   .actions button:hover{border-color:var(--green);color:var(--green);transform:translateY(-1px)}
 
-  #screen{flex:1;overflow-y:auto;padding:18px 20px 10px;cursor:text}
+  #screen{flex:1;overflow-y:auto;padding:18px 20px 10px;cursor:text;-webkit-overflow-scrolling:touch}
   #screen::-webkit-scrollbar{width:8px}#screen::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
   .o{white-space:pre-wrap;word-break:break-word;animation:rise .18s ease both}
   @keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
@@ -76,13 +77,20 @@
   .card{border-left:2px solid var(--line);padding-left:14px;margin:6px 0 4px;transition:border-color .2s}
   .card:hover{border-left-color:var(--green)}
   .tag{color:var(--violet)}
-  .chips{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;border-top:1px solid var(--line);background:var(--bar)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;border-top:1px solid var(--line);background:var(--bar);flex:none}
   .chips button{font:inherit;font-size:12px;color:var(--fg);background:var(--win);border:1px solid var(--line);border-radius:6px;padding:4px 10px;cursor:pointer;transition:.15s}
   .chips button:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
-  @media(max-width:640px){body{padding:0}.window{height:100vh;border-radius:0;border:0}.grid2{grid-template-columns:1fr}.title{display:none}#screen{padding:14px}}
+  @media(max-width:640px){
+    body{padding:0;align-items:flex-start}
+    .window{height:100vh;height:100dvh;border-radius:0;border:0}
+    .grid2{grid-template-columns:1fr}
+    .title{display:none}
+    #screen{padding:14px}
+    .chips{padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+  }
 
   /* GUI view, for people who do not live in a terminal */
-  #gui{position:fixed;inset:0;overflow-y:auto;background:var(--win);font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.65;z-index:20}
+  #gui{position:fixed;inset:0;overflow-y:auto;background:var(--win);font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.65;z-index:20;-webkit-overflow-scrolling:touch}
   #gui .wrap{max-width:820px;margin:0 auto;padding:56px 24px 80px;animation:rise .35s ease both}
   #gui .top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:40px}
   #gui .top button{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}
@@ -236,6 +244,15 @@ const SHIP = [
     links:[["https://github.com/viragtripathi/crdb-dump","crdb-dump"],
            ["https://github.com/viragtripathi/cockroachdb-jdbc-wrapper","jdbc-wrapper"],
            ["https://github.com/viragtripathi/cockroachdb-analyzer","analyzer"]] },
+  { k:"redis-connect", alias:["redis","redis-era","docker-extension","redis-enterprise"],
+    short:"from my Redis years, the CDC platform and a Docker extension with 50k+ installs",
+    title:"Redis Connect and the Redis Enterprise Docker Extension",
+    body:`Before CockroachDB I built Redis Connect, the change data capture and data integration platform for Redis Enterprise, and owned that domain in the field. It ran in production as the CDC path at Fortune 100 customers in consumer tech, telecom and financial services, and its Docker image has passed 10,000 pulls. I also wrote the Redis Enterprise Docker Extension, one click Redis Enterprise for development and test, which has passed 50,000 installs on Docker Hub.`,
+    tags:["java","cdc","redis enterprise","docker"],
+    links:[["https://github.com/redis-field-engineering/redis-connect-dist","redis connect"],
+           ["https://hub.docker.com/r/redislabs/redis-connect","redis connect on docker hub"],
+           ["https://hub.docker.com/r/virag/redis-enterprise-docker-extension","docker extension"],
+           ["https://github.com/redis-field-engineering/redis-enterprise-docker-extension","extension source"]] },
   { k:".internal", alias:["internal","secret","classified"], hidden:true,
     short:"not public yet",
     title:"Permission denied",
@@ -246,7 +263,7 @@ const SHIP = [
 const JOBS = [
   ["Jan 2026","now","Principal, AI Ecosystems Engineer","Cockroach Labs",`Built CockroachDB's AI and ecosystem integrations from scratch. The role was created around that work.`],
   ["Feb 2024","Dec 2025","Principal Solutions Architect","Cockroach Labs",`Technical lead on IBM, core banking, CDC and AI partnerships. Wrote the Debezium connector and led CockroachDB's validation on IBM LinuxONE and Power.`],
-  ["Nov 2020","Feb 2024","Principal Field Engineer","Redis",`Data integration and messaging. Drove Redis Connect and the CDC ecosystem around it.`],
+  ["Nov 2020","Feb 2024","Principal Field Engineer","Redis",`Built Redis Connect, the CDC and data integration platform for Redis Enterprise, running in production at Fortune 100 customers. Wrote the Redis Enterprise Docker Extension, 50k+ installs on Docker Hub.`],
   ["Aug 2018","Nov 2020","Solutions Architect","Redis",`President's Club in 2018 and 2020. Hit 160% of ARR goal in 2020, with the most net new logos in the Americas.`],
   ["Aug 2015","Aug 2018","Global Solutions Architect","TIBCO Software",""],
   ["Apr 2014","Aug 2015","Big Data Consultant","JetBlue Airways",""],
@@ -528,8 +545,8 @@ document.addEventListener("click", async e => {
   if(e.target.closest("#screen") && !window.getSelection().toString() && !e.target.closest("a")) input.focus({preventScroll:true});
 });
 
-const CHIPS = ["help","whoami","ls","experience","writing","contact","chaos","resume"];
-$("#chips").innerHTML = CHIPS.map(c => `<button type="button" data-cmd="${c}">${c}</button>`).join("");
+const CHIPS = ["help","whoami","ls","gui","experience","writing","contact","chaos","resume"];
+$("#chips").innerHTML = CHIPS.map(c => `<button type="button" data-cmd="${c}">${c === "gui" ? "gui view" : c}</button>`).join("");
 $("#themeBtn").addEventListener("click", () => run("theme"));
 $("#guiBtn").addEventListener("click", () => showGui(true));
 
