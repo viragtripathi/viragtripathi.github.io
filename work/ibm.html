@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Taking CockroachDB onto IBM platforms — Virag Tripathi</title>
+<meta name="description" content="I led the technical work to bring CockroachDB onto IBM LinuxONE and Power, connecting platform engineering with a partnership that reached customers.">
+<link rel="canonical" href="https://viragtripathi.github.io/work/ibm.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Taking CockroachDB onto IBM platforms — Virag Tripathi">
+<meta property="og:description" content="I led the technical work to bring CockroachDB onto IBM LinuxONE and Power, connecting platform engineering with a partnership that reached customers.">
+<meta property="og:url" content="https://viragtripathi.github.io/work/ibm.html">
+<meta property="og:image" content="https://viragtripathi.github.io/assets/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Virag Tripathi — From customer challenge to production. Sales engineering, applied AI, and customer delivery.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#29251f">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer>
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<nav class="nav wrap" aria-label="Main navigation">
+<a class="brand" href="../index.html">
+<span class="monogram" aria-hidden="true">vt</span>Virag Tripathi</a>
+<div class="nav-links">
+<a href="../index.html#work">Work</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#writing">Writing</a>
+<a href="../resume.html">Resume</a>
+<a class="engineer" href="../terminal.html">
+<span aria-hidden="true">&gt;_</span> Engineer mode</a>
+</div>
+</nav>
+</header>
+<main id="main" class="wrap">
+<div class="case-hero">
+<a class="back" href="../index.html#work">← Selected work</a>
+<p class="eyebrow">03 / Platform & partner engineering</p>
+<h1>Taking CockroachDB onto IBM platforms</h1>
+<p class="lead">I led the technical work to bring CockroachDB onto IBM LinuxONE and Power, connecting platform engineering with a partnership that reached customers.</p>
+</div>
+<div class="case-meta">
+<div>
+<b>My role</b>Technical lead · partner engineering</div>
+<div>
+<b>Technologies</b>s390x · ppc64le · distributed SQL</div>
+<div>
+<b>Outcome</b>Platform support and certification</div>
+</div>
+<div class="story">
+<aside aria-label="On this page">
+<span class="tag">In this story</span>
+<a href="#problem">Make the platform work first</a>
+<a href="#built">What I led and built</a>
+<a href="#engineering">Where the interesting bugs live</a>
+<a href="#result">Engineering that reached the field</a>
+</aside>
+<div class="prose">
+<div class="case-visual">
+<div class="case-art ibm">
+<div class="art-label">Platform engineering / across architectures</div>
+<div class="platforms">
+<div>
+<b>Z</b>
+<span>LinuxONE · s390x</span>
+</div>
+<div>
+<b>Power</b>
+<span>IBM · ppc64le</span>
+</div>
+</div>
+<small>Validation → platform support → certification</small>
+</div>
+</div>
+<section id="problem">
+<h2>Make the platform work first</h2>
+<p>My role connected partner conversations, technical validation, and engineering delivery. A platform partnership needs working software underneath it. For CockroachDB and IBM, that meant validating distributed SQL on IBM architectures and addressing the compatibility issues that surfaced along the way.</p>
+</section>
+<section id="built">
+<h2>What I led and built</h2>
+<p>I spearheaded the work from the first LinuxONE validation through official platform support and the IBM Power port. That engineering became part of the technical groundwork behind the OEM agreement IBM announced in October 2025.</p>
+<p>I subsequently shipped the CockroachDB certification on IBM Power Systems and IBM Cloud, announced in May 2026. My contribution was the platform and technical enablement work within the broader IBM and Cockroach Labs partnership.</p>
+</section>
+<section id="engineering">
+<h2>Where the interesting bugs live</h2>
+<p>Work across <code>s390x</code> and <code>ppc64le</code> exposed issues that a conventional deployment would not. I landed the ppc64le page-size fix in CockroachDB core, which shipped in v26.3.</p>
+<p>Validating a cluster spanning IBM Z and x86 also surfaced a cross-architecture endianness problem in the vectorized engine. I filed it upstream with a workaround.</p>
+<p>On the data side, I built an open-source pipeline connecting CockroachDB with IBM watsonx.data and Apache Iceberg, and presented that work at IBM's Tech Acceleration Workshop.</p>
+</section>
+<section id="result">
+<h2>Engineering that reached the field</h2>
+<div class="outcome">
+<p>The work progressed from platform validation to official support, certification, and customer business through IBM.</p>
+</div>
+<p>I presented CockroachDB on IBM platforms at IBM Think and IBM TechXchange and wrote about LinuxONE for the IBM Community. IBM also recognized me as an IBM Champion.</p>
+</section>
+<h2>Explore the work</h2>
+<div class="resources">
+<a href="https://www.cockroachlabs.com/blog/ibm-oems-cockroachdb/">ibm oem announcement ↗</a>
+<a href="https://www.prnewswire.com/news-releases/cockroachdb-brings-distributed-sql-to-ibm-power-and-ibm-cloud-302770969.html">power and ibm cloud launch ↗</a>
+<a href="https://community.ibm.com/community/user/blogs/virag-tripathi/2026/07/16/cockroachdb-on-ibm-linuxone-distributed-sql-for-ai">ibm community blog ↗</a>
+<a href="https://github.com/viragtripathi/cockroachdb-watsonx-data-pipeline">watsonx.data pipeline ↗</a>
+</div>
+</div>
+</div>
+</main>
+<div class="wrap">
+<section class="contact" id="contact">
+<div>
+<p class="eyebrow">Let's build something useful</p>
+<h2>The best conversations<br>start with a real problem.</h2>
+</div>
+<a class="button" href="mailto:virag.tripathi@gmail.com">Get in touch <span aria-hidden="true">↗</span>
+</a>
+</section>
+<footer class="footer">
+<span>Virag Tripathi · Tampa, Florida</span>
+<div>
+<a href="https://github.com/viragtripathi">GitHub</a>
+<a href="https://www.linkedin.com/in/virag">LinkedIn</a>
+<a href="../resume.html">Resume</a>
+<a href="../terminal.html">&gt;_ Terminal</a>
+</div>
+</footer>
+</div>
+</body>
+</html>

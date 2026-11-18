@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Putting CockroachDB inside the developer workflow — Virag Tripathi</title>
+<meta name="description" content="I built CockroachDB plugins for AI coding assistants, bringing database guidance and connected tools into the place developers already work.">
+<link rel="canonical" href="https://viragtripathi.github.io/work/ai.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Putting CockroachDB inside the developer workflow — Virag Tripathi">
+<meta property="og:description" content="I built CockroachDB plugins for AI coding assistants, bringing database guidance and connected tools into the place developers already work.">
+<meta property="og:url" content="https://viragtripathi.github.io/work/ai.html">
+<meta property="og:image" content="https://viragtripathi.github.io/assets/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Virag Tripathi — From customer challenge to production. Sales engineering, applied AI, and customer delivery.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#29251f">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer>
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<nav class="nav wrap" aria-label="Main navigation">
+<a class="brand" href="../index.html">
+<span class="monogram" aria-hidden="true">vt</span>Virag Tripathi</a>
+<div class="nav-links">
+<a href="../index.html#work">Work</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#writing">Writing</a>
+<a href="../resume.html">Resume</a>
+<a class="engineer" href="../terminal.html">
+<span aria-hidden="true">&gt;_</span> Engineer mode</a>
+</div>
+</nav>
+</header>
+<main id="main" class="wrap">
+<div class="case-hero">
+<a class="back" href="../index.html#work">← Selected work</a>
+<p class="eyebrow">02 / AI developer experience</p>
+<h1>Putting CockroachDB inside the developer workflow</h1>
+<p class="lead">I built CockroachDB plugins for AI coding assistants, bringing database guidance and connected tools into the place developers already work.</p>
+</div>
+<div class="case-meta">
+<div>
+<b>My role</b>Plugin author · integration engineer</div>
+<div>
+<b>Technologies</b>MCP · agent skills · Python · Go</div>
+<div>
+<b>Outcome</b>Published tools and integrations</div>
+</div>
+<div class="story">
+<aside aria-label="On this page">
+<span class="tag">In this story</span>
+<a href="#problem">Keep the work in the developer workflow</a>
+<a href="#built">What I built</a>
+<a href="#engineering">Beyond a prompt and a connection</a>
+<a href="#result">See it in use</a>
+</aside>
+<div class="prose">
+<div class="case-visual">
+<div class="case-art ai">
+<div class="art-label">Developer tools / meet your database</div>
+<div class="code-prompt">Explore the schema.<br>Explain this query.<br>Build the next feature.</div>
+<div class="tool-tags">
+<span>Codex</span>
+<span>Claude Code</span>
+<span>Cursor</span>
+<span>Copilot</span>
+</div>
+</div>
+</div>
+<section id="problem">
+<h2>Keep the work in the developer workflow</h2>
+<p>Schema exploration, query tuning, and database operations usually require moving between an editor, documentation, and a database console. AI coding assistants offer a place to bring those workflows together, provided they have the right tools and database-specific guidance.</p>
+</section>
+<section id="built">
+<h2>What I built</h2>
+<p>I designed and built CockroachDB plugins for Claude Code, Cursor, GitHub Copilot, and OpenAI Codex. They combine integrations with a shared CockroachDB skills library. I authored the application development and local cluster skills and hardened the library for marketplace security review.</p>
+<p>I worked with the Cloud engineering team on MCP capabilities needed for the plugin launch. The hosted CockroachDB Cloud MCP service is team-built; my work connects that service and its capabilities to developer workflows.</p>
+<p>The ChatGPT plugin was approved in October 2026. David Joy and I co-authored the launch article, with Cloud engineering and OpenAI collaborators helping bring the integration through to release.</p>
+</section>
+<section id="engineering">
+<h2>Beyond a prompt and a connection</h2>
+<p>The integration has to behave correctly after installation: packaged resources must resolve, local stdio servers must start with the right configuration, and hosted tools must authenticate through OAuth. It also needs clear tool behavior and guidance suited to CockroachDB.</p>
+<p>Alongside the plugins, I wrote the CockroachDB integration for Google's MCP Toolbox for Databases and worked with Google to get it merged. I also designed and maintain <code>langchain-cockroachdb</code>, covering vector and hybrid search, chat history, LangGraph checkpoints, and long-term memory.</p>
+</section>
+<section id="result">
+<h2>See it in use</h2>
+<div class="outcome">
+<p>A developer can ask a plain-English question, inspect the schema, look at a query plan, and exercise a database workflow from their coding assistant.</p>
+</div>
+<p>The homepage includes a short recording of my Codex interaction with synthetic demo data: discovery, a bounded query, EXPLAIN, and a scratch write with UUID primary keys.</p>
+<p>
+<a href="../index.html#demo">Watch the Codex walkthrough →</a>
+</p>
+</section>
+<h2>Explore the work</h2>
+<div class="resources">
+<a href="https://github.com/cockroachdb/claude-plugin">claude code ↗</a>
+<a href="https://github.com/cockroachdb/cursor-plugin">cursor ↗</a>
+<a href="https://github.com/cockroachdb/copilot-plugin">copilot ↗</a>
+<a href="https://github.com/cockroachdb/codex-plugin">codex ↗</a>
+<a href="https://chatgpt.com/plugins/plugin_asdk_app_6ae160c3d9e48191aaeffd03cc5ef09d">chatgpt ↗</a>
+<a href="https://www.cockroachlabs.com/blog/cockroachdb-plugin-for-chatgpt-and-codex/">launch blog ↗</a>
+<a href="https://github.com/cockroachlabs/cockroachdb-skills">skills library ↗</a>
+</div>
+</div>
+</div>
+</main>
+<div class="wrap">
+<section class="contact" id="contact">
+<div>
+<p class="eyebrow">Let's build something useful</p>
+<h2>The best conversations<br>start with a real problem.</h2>
+</div>
+<a class="button" href="mailto:virag.tripathi@gmail.com">Get in touch <span aria-hidden="true">↗</span>
+</a>
+</section>
+<footer class="footer">
+<span>Virag Tripathi · Tampa, Florida</span>
+<div>
+<a href="https://github.com/viragtripathi">GitHub</a>
+<a href="https://www.linkedin.com/in/virag">LinkedIn</a>
+<a href="../resume.html">Resume</a>
+<a href="../terminal.html">&gt;_ Terminal</a>
+</div>
+</footer>
+</div>
+</body>
+</html>

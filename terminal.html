@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Engineer mode · Virag Tripathi · Principal, AI Ecosystems Engineer</title>
+<meta name="description" content="Principal, AI Ecosystems Engineer at Cockroach Labs. I wrote CockroachDB's integrations for Debezium, ClickHouse, LangChain, Google MCP Toolbox, Claude Code, Cursor, GitHub Copilot and OpenAI Codex." />
+<meta property="og:title" content="Virag Tripathi · Principal, AI Ecosystems Engineer" />
+<meta property="og:description" content="I build the integrations that put CockroachDB inside the tools developers already use." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://viragtripathi.github.io/terminal.html" />
+<meta name="theme-color" content="#0d1117" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root, html[data-theme="dark"]{
+    --bg:#0a0d12; --win:#0d1117; --bar:#161b22; --line:#232b36;
+    --fg:#d7dde8; --dim:#7d8799; --green:#7ee787; --cyan:#79c0ff;
+    --amber:#e3b341; --red:#ff7b72; --violet:#d2a8ff; --sel:rgba(121,192,255,.18);
+    --glow:rgba(126,231,135,.07);
+  }
+  html[data-theme="light"]{
+    --bg:#ebe7df; --win:#fbfaf6; --bar:#f1ede5; --line:#e0d9cc;
+    --fg:#1d2330; --dim:#6a7180; --green:#1a7f37; --cyan:#0550ae;
+    --amber:#9a6700; --red:#cf222e; --violet:#8250df; --sel:rgba(5,80,174,.12);
+    --glow:rgba(26,127,55,.05);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--fg);font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:14px;line-height:1.55;
+    display:flex;align-items:center;justify-content:center;padding:24px;transition:background .25s}
+  body::before{content:"";position:fixed;inset:-40%;z-index:0;pointer-events:none;
+    background:radial-gradient(600px 400px at 20% 20%,var(--glow),transparent 60%),radial-gradient(700px 500px at 80% 80%,rgba(121,192,255,.05),transparent 60%);
+    animation:drift 26s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:translate3d(-2%,-1%,0) scale(1)}to{transform:translate3d(2%,2%,0) scale(1.06)}}
+  ::selection{background:var(--sel)}
+  a{color:var(--cyan);text-decoration:none;border-bottom:1px dotted currentColor;transition:color .15s}
+  a:hover{color:var(--green)}
+
+  /* dvh keeps the window inside the visible viewport on iOS Safari, where 100vh overshoots behind the toolbars */
+  .window{position:relative;width:100%;max-width:1000px;height:calc(100vh - 48px);height:calc(100dvh - 48px);background:var(--win);border:1px solid var(--line);border-radius:12px;
+    display:flex;flex-direction:column;overflow:hidden;z-index:1;
+    box-shadow:0 30px 80px rgba(0,0,0,.35),0 0 60px var(--glow);
+    animation:powerOn .5s ease both}
+  @keyframes powerOn{0%{opacity:0;transform:scale(.985)}60%{opacity:1}100%{transform:none}}
+  .window::after{content:"";pointer-events:none;position:absolute;inset:0;z-index:6;border-radius:12px;
+    background:repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0 1px,transparent 1px 3px)}
+  html[data-theme="light"] .window::after{background:repeating-linear-gradient(0deg,rgba(0,0,0,.015) 0 1px,transparent 1px 3px)}
+  .bar{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bar);border-bottom:1px solid var(--line);user-select:none;flex:none}
+  .dots{display:flex;gap:7px}
+  .dots i{width:12px;height:12px;border-radius:50%;display:block;background:#ff5f57;transition:transform .15s}
+  .dots i:nth-child(2){background:#febc2e}.dots i:nth-child(3){background:#28c840}
+  .dots:hover i{transform:scale(1.12)}
+  .title{flex:1;text-align:center;color:var(--dim);font-size:12.5px}
+  .actions{display:flex;gap:8px;margin-left:auto}
+  .actions button{font:inherit;font-size:12px;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:6px;padding:3px 9px;cursor:pointer;transition:.15s}
+  .actions button:hover{border-color:var(--green);color:var(--green);transform:translateY(-1px)}
+
+  #screen{flex:1;overflow-y:auto;padding:18px 20px 10px;cursor:text;-webkit-overflow-scrolling:touch}
+  #screen::-webkit-scrollbar{width:8px}#screen::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+  .o{white-space:pre-wrap;word-break:break-word;animation:rise .18s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .o + .o{margin-top:2px}
+  .gap{height:10px}
+  .u{color:var(--green);font-weight:700}.h{color:var(--cyan);font-weight:700}.p{color:var(--violet)}.d{color:var(--dim)}
+  .g{color:var(--green)}.c{color:var(--cyan)}.y{color:var(--amber)}.r{color:var(--red)}.v{color:var(--violet)}.b{font-weight:700}
+  .line{display:flex;align-items:center;gap:8px;margin-top:4px}
+  .line input{flex:1;background:transparent;border:0;outline:0;color:var(--fg);font:inherit;caret-color:var(--green)}
+  .cl{font:inherit;background:none;border:0;color:var(--cyan);cursor:pointer;padding:0;border-bottom:1px dotted currentColor;transition:color .15s}
+  .cl:hover{color:var(--green)}
+  .grid2{display:grid;grid-template-columns:200px 1fr;column-gap:16px;row-gap:3px}
+  .neo{display:flex;gap:28px;flex-wrap:wrap}
+  .neo pre{color:var(--green);font:inherit;line-height:1.25;animation:pulseGlow 3.5s ease-in-out infinite}
+  @keyframes pulseGlow{0%,100%{text-shadow:0 0 0 transparent}50%{text-shadow:0 0 14px var(--glow),0 0 2px currentColor}}
+  .sw{display:inline-block;width:22px;height:12px;margin-right:3px;border-radius:2px}
+  .card{border-left:2px solid var(--line);padding-left:14px;margin:6px 0 4px;transition:border-color .2s}
+  .card:hover{border-left-color:var(--green)}
+  .tag{color:var(--violet)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;border-top:1px solid var(--line);background:var(--bar);flex:none}
+  .chips button{font:inherit;font-size:12px;color:var(--fg);background:var(--win);border:1px solid var(--line);border-radius:6px;padding:4px 10px;cursor:pointer;transition:.15s}
+  .chips button:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
+  @media(max-width:640px){
+    body{padding:0;align-items:flex-start}
+    .window{height:100vh;height:100dvh;border-radius:0;border:0}
+    .grid2{grid-template-columns:1fr}
+    .title{display:none}
+    #screen{padding:14px}
+    .chips{padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+  }
+
+  /* GUI view, for people who do not live in a terminal */
+  #gui{position:fixed;inset:0;overflow-y:auto;background:var(--win);font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.65;z-index:20;-webkit-overflow-scrolling:touch}
+  #gui .wrap{max-width:820px;margin:0 auto;padding:56px 24px 80px;animation:rise .35s ease both}
+  #gui .top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:40px}
+  #gui .top button{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}
+  #gui .top button:hover{border-color:var(--green);color:var(--green)}
+  #gui h1{font-size:clamp(34px,6vw,52px);line-height:1.1;letter-spacing:-.02em}
+  #gui .role{font-size:19px;color:var(--green);font-weight:600;margin-top:8px;font-family:'JetBrains Mono',monospace}
+  #gui h2{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:48px 0 16px}
+  #gui p{margin-top:12px}
+  #gui .item{padding:16px 0;border-top:1px solid var(--line)}
+  #gui .item h3{font-size:17px}
+  #gui .item .meta{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--dim)}
+  #gui .item .links{margin-top:8px;font-size:14px;display:flex;flex-wrap:wrap;gap:14px}
+  @media (prefers-reduced-motion: reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="window" id="win">
+  <div class="bar">
+    <a href="index.html" style="font-size:12px;white-space:nowrap">← Portfolio</a><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="title">virag@prod: ~</span>
+    <span class="actions">
+      <button id="guiBtn" type="button" title="Plain page view">gui view</button>
+      <button id="themeBtn" type="button" title="Switch theme">theme</button>
+    </span>
+  </div>
+  <div id="screen" role="log" aria-live="polite">
+    <div id="out"></div>
+    <div class="line" id="inputLine">
+      <span class="ps1"><span class="u">virag</span><span class="d">@</span><span class="h">prod</span><span class="d">:</span><span class="p">~</span><span class="d">$</span></span>
+      <input id="cmd" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Type a command, or type help" />
+    </div>
+  </div>
+  <div class="chips" id="chips"></div>
+</div>
+
+<div id="gui" hidden></div>
+
+<noscript>
+  <div style="max-width:760px;margin:40px auto;font-family:sans-serif;line-height:1.6;padding:0 20px">
+    <h1>Virag Tripathi</h1>
+    <p><b>Principal, AI Ecosystems Engineer at Cockroach Labs</b></p>
+    <p>I build the integrations that put CockroachDB inside the tools developers already use. I wrote CockroachDB's connectors for Debezium and ClickHouse, its LangChain integration, its Google MCP Toolbox integration and its plugins for Claude Code, Cursor, GitHub Copilot and OpenAI Codex.</p>
+    <p><a href="https://github.com/viragtripathi">GitHub</a> · <a href="https://www.linkedin.com/in/virag">LinkedIn</a> · <a href="https://medium.com/@virag.tripathi">Medium</a> · <a href="resume.html">Resume</a></p>
+  </div>
+</noscript>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- content ---------- */
+
+const ABOUT = [
+  `I build the integrations that put CockroachDB inside the tools developers and data teams already use. I wrote CockroachDB's connectors for Debezium and ClickHouse, its LangChain integration, its Google MCP Toolbox integration and its plugins for Claude Code, Cursor, GitHub Copilot and OpenAI Codex.`,
+  `I started that work from scratch, and the role I hold now was created around it. Before that I spearheaded CockroachDB's work with IBM, from the first LinuxONE validation through the IBM Power port, the technical groundwork behind the OEM agreement IBM announced in 2025. The code lives upstream across the cockroachdb, cockroachlabs, debezium, PeerDB, googleapis and langchain-ai GitHub orgs, not just my own account, and two of my demos run live on demos.cockroachlabs.com. Along the way I keep finding and filing bugs in CockroachDB itself, which is what happens when you push a database through other people's systems.`,
+  `Before Cockroach Labs I spent more than two decades in data integration, messaging and distributed systems at Redis, TIBCO, JetBlue, Delta Air Lines and Cingular Wireless. President's Club at Cockroach Labs and three times at Redis, the Redis CEO Award, and IBM named me an IBM Champion. I still write the code myself, and I still think the best way to win a partner over is to build something real with them.`
+];
+
+const SHIP = [
+  { k:"debezium-cockroachdb", alias:["debezium","dbz","cdc","kafka","confluent","envelope"],
+    short:"Debezium source connector and JDBC sink, both on Confluent Hub",
+    title:"Debezium connector and JDBC sink for CockroachDB",
+    body:`I wrote the Debezium connector for CockroachDB from the first line of code. The Debezium project adopted it as an official connector and it has since graduated out of incubating. I also built CockroachDB support into the Debezium JDBC sink, so changes stream into CockroachDB as well as out of it, and published both on Confluent Hub. The connector is built on CockroachDB's enriched changefeed envelope, which started as a request I filed in 2024 so third party CDC tools could consume changefeeds. I worked it through with the product team and the CDC team shipped it in v25.2.`,
+    tags:["java","kafka connect","cdc","changefeeds"],
+    links:[["https://github.com/debezium/debezium-connector-cockroachdb","source"],
+           ["https://debezium.io/documentation/reference/stable/connectors/cockroachdb.html","docs"],
+           ["https://www.confluent.io/hub/cockroachdb/debezium-connector-cockroachdb","confluent hub, source"],
+           ["https://www.confluent.io/hub/cockroachdb/debezium-connector-jdbc","confluent hub, jdbc sink"],
+           ["https://github.com/viragtripathi/debezium-cockroachdb-examples","examples"]] },
+  { k:"langchain-cockroachdb", alias:["langchain","langgraph","lc"],
+    short:"official CockroachDB integration for LangChain and LangGraph",
+    title:"langchain-cockroachdb",
+    body:`I designed and wrote langchain-cockroachdb, the official CockroachDB integration for LangChain and LangGraph, and I maintain it. It covers vector search, hybrid search, chat history, LangGraph checkpointers and a LangGraph long term memory store with reconciliation and conflict checks. I also wrote the CockroachDB pages in the LangChain provider docs.`,
+    tags:["python","langgraph","vector search","agent memory"],
+    links:[["https://github.com/cockroachdb/langchain-cockroachdb","source"],
+           ["https://pypi.org/project/langchain-cockroachdb/","pypi"],
+           ["https://docs.langchain.com/oss/python/integrations/providers/cockroachdb","langchain docs"]] },
+  { k:"ai-coding-plugins", alias:["plugins","claude","cursor","copilot","codex","chatgpt","skills"],
+    short:"CockroachDB plugins for Claude Code, Cursor, Copilot, Codex and ChatGPT",
+    title:"AI coding plugins",
+    body:`I designed and built the CockroachDB plugins for Claude Code, Cursor, GitHub Copilot and OpenAI Codex. Developers can design schemas, write and tune queries and run clusters without leaving their coding assistant. Every plugin ships the shared CockroachDB agent skills library, where I wrote the application development and local cluster skills and hardened the full library to pass marketplace security review. OpenAI approved the ChatGPT plugin in October 2026. Getting there also meant driving a set of Cockroach Cloud MCP features from customer feedback through engineering. Those are live now, they cleared the blockers for the Codex plugin, and every plugin and integration can use them.`,
+    tags:["mcp","agent skills","typescript","go"],
+    links:[["https://github.com/cockroachdb/claude-plugin","claude code"],
+           ["https://github.com/cockroachdb/cursor-plugin","cursor"],
+           ["https://github.com/cockroachdb/copilot-plugin","copilot"],
+           ["https://github.com/cockroachdb/codex-plugin","codex"],
+           ["https://chatgpt.com/plugins/plugin_asdk_app_6ae160c3d9e48191aaeffd03cc5ef09d","chatgpt"],
+           ["https://www.cockroachlabs.com/blog/cockroachdb-plugin-for-chatgpt-and-codex/","launch blog"],
+           ["https://github.com/cockroachlabs/cockroachdb-skills","skills library"]] },
+  { k:"mcp-toolbox", alias:["mcp","google","toolbox","genai-toolbox"],
+    short:"CockroachDB in Google's MCP Toolbox for Databases",
+    title:"Google MCP Toolbox for Databases",
+    body:`I wrote the CockroachDB integration for Google's MCP Toolbox for Databases and worked with the Google team to get it merged. AI agents can now work with CockroachDB alongside Google Cloud databases through one toolbox. I also wrote the MCP Toolbox blog on cross cloud agents with the Google team.`,
+    tags:["go","mcp","google cloud"],
+    links:[["https://mcp-toolbox.dev/integrations/cockroachdb/source/","docs"],
+           ["https://github.com/googleapis/genai-toolbox","source"],
+           ["https://medium.com/@mcp_toolbox/multi-source-reasoning-with-cockroachdb-and-google-cloud-databases-using-mcp-toolbox-64c39ea878f5","blog"]] },
+  { k:"peerdb-clickhouse", alias:["peerdb","clickhouse","ch"],
+    short:"native CockroachDB connector for PeerDB, streaming into ClickHouse",
+    title:"CockroachDB to ClickHouse with PeerDB",
+    body:`I wrote the native CockroachDB connector for PeerDB, the CDC engine behind ClickHouse. Teams keep CockroachDB as the system of record and stream every change into ClickHouse for real time analytics. Validated with a full CDC mirror on a five node cluster with node kills mid stream, counts and checksums matched.`,
+    tags:["go","cdc","changefeeds","analytics"],
+    links:[["https://github.com/PeerDB-io/peerdb","source"],
+           ["https://docs.peerdb.io/connect/cockroachdb","setup guide"],
+           ["https://github.com/viragtripathi/peerdb-cockroachdb-examples","examples"]] },
+  { k:"airflow-cockroachdb", alias:["airflow","apache-airflow","airflow-patch","airflow-poc"],
+    short:"Airflow support for CockroachDB, the compatibility patch",
+    title:"Apache Airflow on CockroachDB",
+    body:`I built Airflow support for CockroachDB. The Airflow project does not carry CockroachDB compatibility in core, so I wrote and maintain the patch that lets the standard Airflow release run on CockroachDB, handling the retry behavior that otherwise crashes the scheduler. Validated on a single node and on a five node, three region cluster with two schedulers under load. The patch is headed to the cockroachdb GitHub org.`,
+    tags:["python","workflow orchestration","postgres compatibility"],
+    links:[["https://github.com/viragtripathi/cockroachdb-airflow-poc","source"]] },
+  { k:"chaos-demo", alias:["chaos-demo","resilience"],
+    short:"16 agents, one region outage, zero failed turns",
+    title:"The chaos demo",
+    body:`A live resilience demo. 16 LangGraph agents kept working on CockroachDB through a simulated region outage, 1,759 agent turns with zero failures. It runs live on demos.cockroachlabs.com, and the multi region chaos cluster is open source if you want to break one yourself. Or type chaos right here.`,
+    tags:["multi region","langgraph","toxiproxy","haproxy"],
+    links:[["https://demos.cockroachlabs.com/","demos.cockroachlabs.com"],
+           ["https://github.com/viragtripathi/cockroach-chaos-demo","chaos cluster"]] },
+  { k:"ibm-platforms", alias:["ibm","power","linuxone","s390x","ppc64le","z","watsonx","lakehouse","oem"],
+    short:"spearheaded CockroachDB on IBM LinuxONE and Power, the groundwork behind the IBM OEM",
+    title:"IBM LinuxONE, IBM Power, IBM Cloud and watsonx.data",
+    body:`I spearheaded CockroachDB's IBM platform work end to end. It started with the first LinuxONE (s390x) validation, continued through official platform support and the IBM Power (ppc64le) port, and became the technical groundwork behind the OEM agreement IBM announced in October 2025. I then shipped the CockroachDB certification on IBM Power Systems and IBM Cloud, announced at IBM's Announcement Day in May 2026, and validated a single CockroachDB cluster spanning IBM Z and x86 nodes, which surfaced a cross architecture bug in the vectorized engine that I filed upstream with a workaround. The work has already produced closed business through IBM and a growing pipeline. On the data side I built an open source pipeline from CockroachDB into IBM watsonx.data and Apache Iceberg, presented at IBM's Tech Acceleration Workshop, and I have presented CockroachDB on IBM at IBM Think and IBM TechXchange. I wrote the IBM Community blog on running CockroachDB on LinuxONE, and IBM named me an IBM Champion.`,
+    tags:["s390x","ppc64le","iceberg","mainframe modernization"],
+    links:[["https://www.cockroachlabs.com/blog/ibm-oems-cockroachdb/","ibm oem announcement"],
+           ["https://www.prnewswire.com/news-releases/cockroachdb-brings-distributed-sql-to-ibm-power-and-ibm-cloud-302770969.html","power and ibm cloud launch"],
+           ["https://community.ibm.com/community/user/blogs/virag-tripathi/2026/07/16/cockroachdb-on-ibm-linuxone-distributed-sql-for-ai","ibm community blog"],
+           ["https://github.com/viragtripathi/cockroachdb-watsonx-data-pipeline","watsonx.data pipeline"]] },
+  { k:"banko-ai", alias:["banko","rag"],
+    short:"multi agent banking assistant on a single CockroachDB cluster",
+    title:"Banko AI",
+    body:`I built Banko AI, a multi agent banking assistant that runs RAG, agents and memory on a single CockroachDB cluster, and packaged it for PyPI and Docker. It also runs live on demos.cockroachlabs.com, and I presented the resilient agentic AI story built on this work at AWS re:Invent 2025.`,
+    tags:["python","rag","agents","vector search"],
+    links:[["https://github.com/cockroachlabs-field/banko-ai-assistant","source"],
+           ["https://demos.cockroachlabs.com/","demos.cockroachlabs.com"],
+           ["https://www.cockroachlabs.com/blog/resilient-genai-agentic-apps-intelligent-memory/","re:invent recap"]] },
+  { k:"vectordbbench", alias:["vdbb","benchmark","bench"],
+    short:"CockroachDB in the open source vector database benchmark",
+    title:"VectorDBBench",
+    body:`I added CockroachDB to VectorDBBench, the open source vector database benchmark.`,
+    tags:["python","vector search","benchmarks"],
+    links:[["https://github.com/zilliztech/VectorDBBench","source"]] },
+  { k:"upstream", alias:["contrib","contributions","core","cockroach-core","sqlalchemy","cloud-mcp","issues","bugs","fineract","docs"],
+    short:"cockroach core, sqlalchemy, fineract, docs, and the bugs I found along the way",
+    title:"Upstream contributions and bugs found",
+    body:`Not everything I ship is a connector with my name on it. Some of it lands in other people's repos. Platform enablement in CockroachDB core for IBM Z (s390x) and IBM Power (ppc64le), including the ppc64le page size fix I landed in cockroach core that shipped in v26.3. The sqlalchemy-cockroachdb dialect work that unblocked Airflow. Upstream tickets in Apache Fineract for running it on CockroachDB. CockroachDB product docs on changefeeds and the LangChain provider docs. The enriched changefeed envelope request that the CDC team shipped in v25.2. Cockroach Cloud MCP features driven from customer feedback and worked through with engineering, now live for every plugin and integration. And the bugs that integration work shakes loose, a plan cache regression triggered by user defined functions, a COMMIT path that ignored statement timeouts during quorum loss, a SHOW PARTITIONS failure the PeerDB connector surfaced, vector index gaps on regional by row tables and a cross architecture endianness panic in the vectorized engine, several already fixed in point releases.`,
+    tags:["go","python","postgres compatibility","bug reports"],
+    links:[["https://github.com/cockroachdb/cockroach","cockroachdb/cockroach"],
+           ["https://github.com/cockroachdb/sqlalchemy-cockroachdb","sqlalchemy-cockroachdb"],
+           ["https://github.com/cockroachdb/docs","cockroachdb/docs"]] },
+  { k:"tools", alias:["crdb-dump","jdbc","analyzer"],
+    short:"open source tools I built and maintain",
+    title:"Tools I built and maintain",
+    body:`crdb-dump exports and imports schema and data as SQL, JSON, YAML or CSV. The JDBC wrapper retries transient errors with no application code changes. The analyzer runs diagnostics and performance checks.`,
+    tags:["go","java","python"],
+    links:[["https://github.com/viragtripathi/crdb-dump","crdb-dump"],
+           ["https://github.com/viragtripathi/cockroachdb-jdbc-wrapper","jdbc-wrapper"],
+           ["https://github.com/viragtripathi/cockroachdb-analyzer","analyzer"]] },
+  { k:"redis-connect", alias:["redis","redis-era","docker-extension","redis-enterprise"],
+    short:"from my Redis years, the CDC platform and a Docker extension for local development",
+    title:"Redis Connect and the Redis Enterprise Docker Extension",
+    body:`Before CockroachDB I built Redis Connect, the change data capture and data integration platform for Redis Enterprise, and owned that domain in the field. It ran in production as the CDC path at Fortune 100 customers in consumer tech, telecom and financial services, with a publicly available Docker image. I also wrote the Redis Enterprise Docker Extension, one click Redis Enterprise for development and test.`,
+    tags:["java","cdc","redis enterprise","docker"],
+    links:[["https://github.com/redis-field-engineering/redis-connect-dist","redis connect"],
+           ["https://hub.docker.com/r/redislabs/redis-connect","redis connect on docker hub"],
+           ["https://hub.docker.com/r/virag/redis-enterprise-docker-extension","docker extension"],
+           ["https://github.com/redis-field-engineering/redis-enterprise-docker-extension","extension source"]] },
+  { k:".internal", alias:["internal","secret","classified"], hidden:true,
+    short:"not public yet",
+    title:"Permission denied",
+    body:`Some of my favorite work is still internal. I can say this much. I took a real time voice AI coaching app from prototype to production on Google Cloud and contributed the model catalog and realtime session handling to the shared AI gateway behind it, and I am a core contributor to an adaptive long term memory system for AI agents. All of it runs on CockroachDB.`,
+    tags:["voice ai","agent memory","google cloud"], links:[] }
+];
+
+const JOBS = [
+  ["Jan 2026","now","Principal, AI Ecosystems Engineer","Cockroach Labs",`Built CockroachDB's AI and ecosystem integrations from scratch. The role was created around that work. Shipped CockroachDB on IBM Power and IBM Cloud. President's Club 2026.`],
+  ["Feb 2024","Dec 2025","Principal Solutions Architect","Cockroach Labs",`Technical lead on IBM, core banking, CDC and AI partnerships. Spearheaded CockroachDB on IBM LinuxONE and Power, the groundwork behind the IBM OEM agreement, and wrote the Debezium connector.`],
+  ["Nov 2020","Feb 2024","Principal Field Engineer","Redis",`Built Redis Connect, the CDC and data integration platform for Redis Enterprise, running in production at Fortune 100 customers. Wrote the Redis Enterprise Docker Extension, President's Club 2023.`],
+  ["Aug 2018","Nov 2020","Solutions Architect","Redis",`President's Club in 2018 and 2020 and the Redis CEO Award in 2020. Hit 160% of ARR goal in 2020, with the most net new logos in the Americas.`],
+  ["Aug 2015","Aug 2018","Global Solutions Architect","TIBCO Software",""],
+  ["Apr 2014","Aug 2015","Big Data Consultant","JetBlue Airways",""],
+  ["Aug 2010","Apr 2014","Senior Specialty Developer","Delta Air Lines",""],
+  ["Jul 2008","Aug 2010","Senior Consultant, Professional Services","TIBCO Software",""],
+  ["Sep 2003","Jul 2008","Senior Developer","Delta Technology",""],
+  ["May 2000","Sep 2003","Senior Developer","Cingular Wireless",""]
+];
+const EDU = "B.Sc. in Mathematics and Physics, Deendayal Upadhyay Gorakhpur University";
+
+const WRITING = [
+  ["https://www.cockroachlabs.com/blog/cockroachdb-plugin-for-chatgpt-and-codex/","The CockroachDB plugin for ChatGPT and Codex, co-authored the launch blog","cockroachlabs.com"],
+  ["https://medium.com/@mcp_toolbox/multi-source-reasoning-with-cockroachdb-and-google-cloud-databases-using-mcp-toolbox-64c39ea878f5","Cross cloud AI agents with CockroachDB and Google Cloud databases, written with the Google team","MCP Toolbox on Medium"],
+  ["https://community.ibm.com/community/user/blogs/virag-tripathi/2026/07/16/cockroachdb-on-ibm-linuxone-distributed-sql-for-ai","CockroachDB on IBM LinuxONE, distributed SQL for AI","IBM Community"],
+  ["https://medium.com/@virag.tripathi/building-agentic-ai-on-resilient-data-from-oltp-to-lakehouse-with-watsonx-cockroachdb-107426db91e0","Building agentic AI on resilient data, from OLTP to lakehouse with watsonx and CockroachDB","Medium"],
+  ["https://medium.com/@virag.tripathi/from-vector-search-to-durable-ai-agents-langchain-langgraph-and-cockroachdb-be1321d6fb50","From vector search to durable AI agents with LangChain, LangGraph and CockroachDB","Medium"],
+  ["https://medium.com/@virag.tripathi","Everything else, cloud native core banking with Apache Fineract, vector search, JDBC retries","Medium"],
+  ["https://www.cockroachlabs.com/blog/resilient-genai-agentic-apps-intelligent-memory/","Presented Build Resilient GenAI and Agentic Apps with Intelligent Memory at AWS re:Invent 2025","talk"],
+  ["https://www.cockroachlabs.com/partners/ibm/","Presented CockroachDB on IBM platforms at IBM Think and IBM TechXchange","talks"],
+  ["https://github.com/viragtripathi/cockroachdb-watsonx-data-pipeline","Presented the CockroachDB to watsonx.data lakehouse pipeline at IBM's Tech Acceleration Workshop, April 2026","talk"],
+  ["https://cockroachdb-ai.devpost.com/","Judge for the CockroachDB and AWS hackathon on agentic memory, 600+ submissions","Devpost"]
+];
+
+const CONTACT = [
+  ["email","mailto:virag.tripathi@gmail.com","virag.tripathi@gmail.com"],
+  ["linkedin","https://www.linkedin.com/in/virag","linkedin.com/in/virag"],
+  ["github","https://github.com/viragtripathi","github.com/viragtripathi"],
+  ["medium","https://medium.com/@virag.tripathi","medium.com/@virag.tripathi"],
+  ["x","https://x.com/viragmtripathi","x.com/viragmtripathi"]
+];
+
+/* ---------- terminal plumbing ---------- */
+
+const $ = s => document.querySelector(s);
+const out = $("#out"), input = $("#cmd"), screen = $("#screen");
+const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let fast = reduce, busy = false;
+const hist = []; let hi = 0;
+const PS1 = $(".ps1").innerHTML;
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sleep = ms => new Promise(r => setTimeout(r, fast ? 0 : ms));
+const A = (href, text) => `<a href="${href}" target="_blank" rel="noopener">${esc(text)}</a>`;
+const C = (cmd, label) => `<button class="cl" type="button" data-cmd="${esc(cmd)}">${esc(label || cmd)}</button>`;
+function print(html, cls){ const d = document.createElement("div"); d.className = "o" + (cls ? " " + cls : ""); d.innerHTML = html; out.appendChild(d); screen.scrollTop = screen.scrollHeight; return d; }
+const gap = () => print("", "gap");
+function hash(s){ let h = 2166136261; for (const ch of s){ h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0).toString(16).padStart(8,"0").slice(0,7); }
+function find(name){ name = (name||"").toLowerCase().replace(/^~\/shipped\//,"").replace(/\/$/,""); return SHIP.find(s => s.k === name || s.alias.includes(name)); }
+
+/* ---------- matrix rain ---------- */
+
+let fxTimer = null;
+function runMatrix(ms){
+  if(fxTimer) return;
+  const win = $("#win");
+  const c = document.createElement("canvas");
+  c.style.cssText = "position:absolute;inset:0;z-index:5;pointer-events:none;border-radius:12px";
+  win.appendChild(c);
+  const r = win.getBoundingClientRect(); c.width = r.width; c.height = r.height;
+  const ctx = c.getContext("2d");
+  const fs = 14, cols = Math.floor(c.width / fs), drops = new Array(cols).fill(1);
+  const glyphs = "アイウエオカキクケコサシスセソ01{}<>/=;CRDBSQL";
+  const dark = document.documentElement.dataset.theme !== "light";
+  fxTimer = setInterval(() => {
+    ctx.fillStyle = dark ? "rgba(13,17,23,0.14)" : "rgba(251,250,246,0.2)";
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.fillStyle = dark ? "#7ee787" : "#1a7f37";
+    ctx.font = fs + "px 'JetBrains Mono',monospace";
+    for(let i = 0; i < drops.length; i++){
+      ctx.fillText(glyphs[Math.floor(Math.random() * glyphs.length)], i * fs, drops[i] * fs);
+      if(drops[i] * fs > c.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+  }, 50);
+  setTimeout(() => { clearInterval(fxTimer); fxTimer = null; c.remove(); }, ms);
+}
+
+/* ---------- commands ---------- */
+
+const HELP = [
+  ["whoami","who I am, in one line"],
+  ["about","the longer version"],
+  ["neofetch","system info, human edition"],
+  ["ls","everything I have shipped"],
+  ["cat <name>","details on one project, try cat debezium"],
+  ["open <name>","open a project's main link"],
+  ["experience","git log of my career"],
+  ["writing","blogs, talks and community"],
+  ["resume","printable resume"],
+  ["contact","how to reach me"],
+  ["chaos","kill a region and watch the agents keep going"],
+  ["gui","plain page view, no terminal skills needed"],
+  ["theme","switch light and dark"],
+  ["clear","clear the screen"]
+];
+
+const CMD = {
+  help(){
+    print(`<span class="b">available commands</span>`);
+    print(`<div class="grid2">${HELP.map(([c,d]) => `<span>${C(c.split(" ")[0], c)}</span><span class="d">${esc(d)}</span>`).join("")}</div>`);
+    print(`<span class="d">tab completes, arrow keys walk history. a few commands are not listed.</span>`);
+  },
+  whoami(){
+    print(`<span class="g b">virag tripathi</span> <span class="d">·</span> principal, ai ecosystems engineer <span class="d">@</span> <span class="c">cockroach labs</span>`);
+    print(`I build the integrations that put CockroachDB inside the tools developers already use.`);
+  },
+  about(){ ABOUT.forEach((p,i) => { if(i) gap(); print(esc(p)); }); },
+  neofetch(){
+    const art =
+`      .-~~~~~~~~-.
+     (            )
+     |~-.______.-~|
+     |            |
+     |~-.______.-~|
+     |   crdb     |
+     |~-.______.-~|
+      \`-.______.-'`;
+    const rows = [
+      ["role","Principal, AI Ecosystems Engineer"],
+      ["company","Cockroach Labs"],
+      ["uptime","26 years shipping software"],
+      ["kernel","distributed sql"],
+      ["shell","go · java · python"],
+      ["packages","debezium, langchain, mcp-toolbox, peerdb, airflow, claude-code, cursor, copilot, codex"],
+      ["awards","President's Club at Cockroach Labs, 3x at Redis, Redis CEO Award, IBM Champion"],
+      ["languages","English, Hindi, Bhojpuri"],
+      ["based","Tampa, FL"]
+    ];
+    const sw = ["--red","--amber","--green","--cyan","--violet","--fg"].map(v => `<span class="sw" style="background:var(${v})"></span>`).join("");
+    print(`<div class="neo"><pre>${esc(art)}</pre><div><span class="u">virag</span><span class="d">@</span><span class="h">prod</span>\n<span class="d">${"-".repeat(10)}</span>\n${rows.map(([k,v]) => `<span class="y">${k.padEnd(10," ")}</span>${esc(v)}`).join("\n")}\n\n${sw}</div></div>`);
+  },
+  ls(args){
+    const all = args.includes("-a") || args.includes("-la") || args.includes("-al");
+    print(`<span class="d">~/shipped</span>`);
+    SHIP.filter(s => all || !s.hidden).forEach(s => {
+      print(`<span class="d">${s.hidden ? "d---------" : "drwxr-xr-x"}</span>  ${C("cat " + s.k, s.k.padEnd(22," "))}  <span class="d">${esc(s.short)}</span>`);
+    });
+    gap(); print(`<span class="d">type cat &lt;name&gt; or click one. two of these run live on ${A("https://demos.cockroachlabs.com/","demos.cockroachlabs.com")}.</span>`);
+  },
+  cat(args){
+    if(!args.length){ print(`<span class="r">cat: missing file name.</span> try ${C("cat debezium")}`); return; }
+    if(args[0] === "about.txt" || args[0] === "about") return CMD.about();
+    const s = find(args[0]);
+    if(!s){ print(`<span class="r">cat: ${esc(args[0])}: no such file.</span> try ${C("ls")}`); return; }
+    print(`<span class="g b">${esc(s.title)}</span>`);
+    print(`<div class="card">${esc(s.body)}\n<span class="tag">${s.tags.map(t => "#" + t.replace(/ /g,"-")).join("  ")}</span>${s.links.length ? "\n" + s.links.map(([u,l]) => A(u,l)).join("  ") : ""}</div>`);
+  },
+  open(args){
+    const s = find(args[0]);
+    if(!s || !s.links.length){ print(`<span class="r">open: nothing to open for ${esc(args[0]||"")}.</span>`); return; }
+    print(`opening ${A(s.links[0][0], s.links[0][1])} ...`);
+    window.open(s.links[0][0], "_blank", "noopener");
+  },
+  experience(){
+    JOBS.forEach(([from,to,role,org,note], i) => {
+      print(`<span class="y">commit ${hash(role+org+from)}</span>${i===0 ? ` <span class="c">(HEAD -&gt; main)</span>` : ""}`);
+      print(`<span class="d">Date    ${from} to ${to}</span>`);
+      print(`    <span class="b">${esc(role)}</span> <span class="d">·</span> <span class="c">${esc(org)}</span>${note ? "\n    " + esc(note) : ""}`);
+      gap();
+    });
+    print(`<span class="y">commit ${hash(EDU)}</span> <span class="d">(root)</span>\n    ${esc(EDU)}`);
+  },
+  writing(){
+    WRITING.forEach(([u,t,w]) => print(`<span class="g">›</span> ${A(u,t)} <span class="d">${esc(w)}</span>`));
+  },
+  resume(){
+    print(`${A("resume.html","resume.html")} <span class="d">opens a printable page. save as PDF from your browser.</span>`);
+  },
+  contact(){
+    print(`<div class="grid2">${CONTACT.map(([k,u,t]) => `<span class="y">${k}</span><span>${A(u,t)}</span>`).join("")}</div>`);
+  },
+  demos(){
+    print(`two of my demos run live on ${A("https://demos.cockroachlabs.com/","demos.cockroachlabs.com")}, the chaos demo and Banko AI. or type ${C("chaos")} for the in-browser version.`);
+  },
+  async chaos(){
+    busy = true;
+    print(`<span class="d">simulation running in your browser. the numbers mirror my live demo.</span>`);
+    const regs = ["us-east1","us-west2","europe-west1"].map(r => print(`<span class="g">●</span> ${r.padEnd(14," ")}3 nodes  healthy`));
+    await sleep(500);
+    print(`starting 16 LangGraph agents on CockroachDB ...`);
+    const meter = print("");
+    const total = 1759; let turns = 0, killed = false;
+    while(turns < total){
+      turns = Math.min(total, turns + 9 + Math.floor(Math.random()*14));
+      if(!killed && turns > 520){
+        killed = true;
+        regs[0].innerHTML = `<span class="r">✗</span> us-east1      3 nodes  <span class="r">unreachable</span>`;
+        print(`<span class="r">✗ region us-east1 lost</span>`);
+        await sleep(450);
+        print(`<span class="c">↻ ranges elect new leaseholders in us-west2 and europe-west1</span>`);
+      }
+      meter.innerHTML = `agents <span class="b">16</span>   turns <span class="b">${turns.toLocaleString()}</span>   failed <span class="g b">0</span>`;
+      screen.scrollTop = screen.scrollHeight;
+      await sleep(16);
+    }
+    print(`<span class="g">✓ ${total.toLocaleString()} turns, 0 failed. the agents never noticed.</span>`);
+    print(`<span class="d">the real one runs on ${A("https://demos.cockroachlabs.com/","demos.cockroachlabs.com")}.</span>`);
+    busy = false;
+  },
+  matrix(){
+    if(reduce){ print(`<span class="d">motion is reduced on this device, so the rain stays off.</span>`); return; }
+    runMatrix(7000);
+    print(`<span class="g">wake up, neo. the schema follows you.</span>`);
+  },
+  gui(){ showGui(true); print(`<span class="d">opened gui view. type anything to come back.</span>`); },
+  theme(args){
+    const root = document.documentElement;
+    const next = args[0] === "light" || args[0] === "dark" ? args[0] : (root.dataset.theme === "dark" ? "light" : "dark");
+    root.dataset.theme = next;
+    try { localStorage.setItem("theme", next); } catch(e){}
+    print(`<span class="d">theme set to ${next}.</span>`);
+  },
+  clear(){ out.innerHTML = ""; },
+  history(){ hist.forEach((h,i) => print(`<span class="d">${String(i+1).padStart(4," ")}</span>  ${esc(h)}`)); },
+  pwd(){ print("/home/virag"); },
+  date(){ print(new Date().toString()); },
+  echo(args){ print(esc(args.join(" "))); },
+  sudo(args){
+    if(args.join(" ").toLowerCase() === "hire virag"){
+      print(`<span class="d">[sudo] password for recruiter: ********</span>`);
+      print(`<span class="g">access granted.</span> the fastest path is ${A("mailto:virag.tripathi@gmail.com","virag.tripathi@gmail.com")} or ${A("https://www.linkedin.com/in/virag","linkedin")}.`);
+    } else {
+      print(`<span class="r">you are not in the sudoers file.</span> this incident will be reported. <span class="d">(hint, sudo hire virag)</span>`);
+    }
+  },
+  rm(args){
+    if(args.some(a => a.includes("r")) ) print(`<span class="y">nice try.</span> this box survives failures the same way a CockroachDB cluster does.`);
+    else print(`<span class="r">rm: permission denied</span>`);
+  },
+  cockroach(args){
+    if(args.includes("--insecure")) print(`<span class="y">not on my watch.</span> use --certs-dir.`);
+    else print(`<span class="d">usage</span> cockroach demo  <span class="d">or try</span> ${C("chaos")}`);
+  },
+  exit(){ print(`there is no exit. only more integrations.`); },
+  vim(){ print(`<span class="d">you are now stuck in vim. kidding. type</span> ${C("help")}`); },
+  coffee(){ print(`☕ brewing ... done. now back to shipping.`); }
+};
+CMD["?"] = CMD.help; CMD.man = CMD.help; CMD.git = (a) => (a[0] === "log" ? CMD.experience() : print(`<span class="d">try</span> ${C("git log")}`));
+CMD.cd = (a) => print(a[0] ? `<span class="d">you are already where the work is.</span>` : "");
+CMD.emacs = CMD.vim; CMD.nano = CMD.vim; CMD.quit = CMD.exit; CMD.logout = CMD.exit;
+CMD.cmatrix = CMD.matrix; CMD.neo = CMD.matrix;
+
+async function run(raw, echo = true){
+  const line = raw.trim();
+  if(echo) print(`${PS1} ${esc(line)}`);
+  if(!line) return;
+  hist.push(line); hi = hist.length;
+  const [name, ...args] = line.split(/\s+/);
+  const fn = CMD[name.toLowerCase()];
+  if(fn) await fn(args);
+  else if(find(name)) await CMD.cat([name]);
+  else print(`<span class="r">command not found: ${esc(name)}</span>. type ${C("help")}`);
+}
+
+/* ---------- input handling ---------- */
+
+input.addEventListener("keydown", async e => {
+  if(!$("#gui").hidden){ showGui(false); }
+  if(e.key === "Enter"){
+    if(busy){ e.preventDefault(); return; }
+    const v = input.value; input.value = "";
+    await run(v);
+  } else if(e.key === "ArrowUp"){
+    if(hi > 0){ hi--; input.value = hist[hi]; } e.preventDefault();
+  } else if(e.key === "ArrowDown"){
+    if(hi < hist.length - 1){ hi++; input.value = hist[hi]; } else { hi = hist.length; input.value = ""; } e.preventDefault();
+  } else if(e.key === "Tab"){
+    e.preventDefault();
+    const parts = input.value.split(/\s+/);
+    const pool = parts.length > 1 ? SHIP.filter(s => !s.hidden).map(s => s.k) : Object.keys(CMD);
+    const cur = parts[parts.length - 1];
+    const hits = pool.filter(w => w.startsWith(cur));
+    if(hits.length === 1){ parts[parts.length - 1] = hits[0]; input.value = parts.join(" ") + " "; }
+    else if(hits.length > 1){ print(`${PS1} ${esc(input.value)}`); print(`<span class="d">${hits.join("   ")}</span>`); }
+  } else if(e.key === "l" && e.ctrlKey){
+    e.preventDefault(); CMD.clear();
+  }
+});
+
+document.addEventListener("click", async e => {
+  const b = e.target.closest("[data-cmd]");
+  if(b){ if(busy) return; e.preventDefault(); await run(b.dataset.cmd); input.focus({preventScroll:true}); return; }
+  if(e.target.closest("#screen") && !window.getSelection().toString() && !e.target.closest("a")) input.focus({preventScroll:true});
+});
+
+const CHIPS = ["help","whoami","ls","gui","experience","writing","contact","chaos","resume"];
+$("#chips").innerHTML = CHIPS.map(c => `<button type="button" data-cmd="${c}">${c === "gui" ? "gui view" : c}</button>`).join("");
+$("#themeBtn").addEventListener("click", () => run("theme"));
+$("#guiBtn").addEventListener("click", () => showGui(true));
+
+/* ---------- gui view ---------- */
+
+function showGui(on){
+  if(on){ window.location.href="index.html"; return; }
+  const g = $("#gui");
+  if(on && !g.innerHTML) g.innerHTML = buildGui();
+  g.hidden = !on;
+  if(on) g.scrollTop = 0; else input.focus({preventScroll:true});
+}
+function buildGui(){
+  const L = links => links.map(([u,l]) => A(u,l)).join("");
+  return `<div class="wrap">
+    <div class="top"><span class="d" style="font-family:'JetBrains Mono',monospace;font-size:13px">viragtripathi.github.io</span>
+      <button type="button" onclick="document.getElementById('gui').hidden=true;document.getElementById('cmd').focus()">back to terminal</button></div>
+    <h1>Virag Tripathi</h1>
+    <div class="role">Principal, AI Ecosystems Engineer · Cockroach Labs</div>
+    ${ABOUT.map(p => `<p>${esc(p)}</p>`).join("")}
+    <p>${CONTACT.map(([k,u,t]) => A(u, k)).join(" · ")} · ${A("resume.html","resume")}</p>
+    <h2>What I built</h2>
+    ${SHIP.map(s => `<div class="item"><h3>${esc(s.hidden ? "Internal AI tools" : s.title)}</h3><p>${esc(s.body.replace(/^Some of my favorite work is still internal\. I can say this much\. /,""))}</p>${s.links.length ? `<div class="links">${L(s.links)}</div>` : ""}</div>`).join("")}
+    <h2>Experience</h2>
+    ${JOBS.map(([f,t,r,o,n]) => `<div class="item"><h3>${esc(r)}, ${esc(o)}</h3><div class="meta">${f} to ${t}</div>${n ? `<p>${esc(n)}</p>` : ""}</div>`).join("")}
+    <div class="item"><h3>Education</h3><p>${esc(EDU)}</p></div>
+    <h2>Writing, talks and community</h2>
+    ${WRITING.map(([u,t,w]) => `<div class="item">${A(u,t)} <span class="meta">${esc(w)}</span></div>`).join("")}
+  </div>`;
+}
+
+/* ---------- boot ---------- */
+
+try { const t = localStorage.getItem("theme"); if(t) document.documentElement.dataset.theme = t; } catch(e){}
+
+async function typeAndRun(cmd){
+  for(const ch of cmd){ input.value += ch; await sleep(55); }
+  await sleep(180); input.value = ""; await run(cmd);
+}
+
+async function boot(){
+  busy = true;
+  const skip = () => { fast = true; };
+  window.addEventListener("keydown", skip, { once:true });
+  screen.addEventListener("click", skip, { once:true });
+  const units = [
+    "debezium-cockroachdb.service","langchain-cockroachdb.service","mcp-toolbox-cockroachdb.service",
+    "peerdb-cockroachdb.service","airflow-cockroachdb.service","ai-coding-plugins.target","ibm-platforms.target"
+  ];
+  for(const u of units){ print(`<span class="d">[</span><span class="g">  OK  </span><span class="d">]</span> Started <span class="b">${u}</span>`); await sleep(120); }
+  print(`<span class="d">[</span><span class="g">  OK  </span><span class="d">]</span> Reached target <span class="b">ecosystem.target</span>`);
+  gap(); await sleep(250);
+  await typeAndRun("neofetch");
+  gap();
+  await typeAndRun("whoami");
+  gap();
+  print(`type ${C("help")} or click a command below. not a terminal person? open the ${C("gui","gui view")}.`);
+  busy = false;
+  input.focus({preventScroll:true});
+}
+boot();
+
+})();
+</script>
+</body>
+</html>

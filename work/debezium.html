@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bringing CockroachDB into Debezium — Virag Tripathi</title>
+<meta name="description" content="I built the CockroachDB source connector and JDBC sink support, giving data teams a familiar way to move changes into and out of CockroachDB.">
+<link rel="canonical" href="https://viragtripathi.github.io/work/debezium.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bringing CockroachDB into Debezium — Virag Tripathi">
+<meta property="og:description" content="I built the CockroachDB source connector and JDBC sink support, giving data teams a familiar way to move changes into and out of CockroachDB.">
+<meta property="og:url" content="https://viragtripathi.github.io/work/debezium.html">
+<meta property="og:image" content="https://viragtripathi.github.io/assets/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Virag Tripathi — From customer challenge to production. Sales engineering, applied AI, and customer delivery.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#29251f">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer>
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<nav class="nav wrap" aria-label="Main navigation">
+<a class="brand" href="../index.html">
+<span class="monogram" aria-hidden="true">vt</span>Virag Tripathi</a>
+<div class="nav-links">
+<a href="../index.html#work">Work</a>
+<a href="../index.html#about">About</a>
+<a href="../index.html#writing">Writing</a>
+<a href="../resume.html">Resume</a>
+<a class="engineer" href="../terminal.html">
+<span aria-hidden="true">&gt;_</span> Engineer mode</a>
+</div>
+</nav>
+</header>
+<main id="main" class="wrap">
+<div class="case-hero">
+<a class="back" href="../index.html#work">← Selected work</a>
+<p class="eyebrow">01 / Data integration</p>
+<h1>Bringing CockroachDB into Debezium</h1>
+<p class="lead">I built the CockroachDB source connector and JDBC sink support, giving data teams a familiar way to move changes into and out of CockroachDB.</p>
+</div>
+<div class="case-meta">
+<div>
+<b>My role</b>Connector author · upstream contributor</div>
+<div>
+<b>Technologies</b>Java · Kafka Connect · changefeeds</div>
+<div>
+<b>Outcome</b>Official Debezium connector</div>
+</div>
+<div class="story">
+<aside aria-label="On this page">
+<span class="tag">In this story</span>
+<a href="#problem">The missing connection</a>
+<a href="#built">What I built</a>
+<a href="#engineering">The engineering behind the integration</a>
+<a href="#result">What changed</a>
+</aside>
+<div class="prose">
+<div class="case-visual">
+<div class="case-art">
+<div class="art-label">Change data capture / two directions</div>
+<div class="flow">
+<b>CockroachDB</b>
+<span aria-hidden="true">→</span>
+<b>Debezium<br>source</b>
+<span aria-hidden="true">→</span>
+<b>Kafka</b>
+</div>
+<div class="flow" style="margin-top:14px">
+<b>Kafka</b>
+<span aria-hidden="true">→</span>
+<b>JDBC<br>sink</b>
+<span aria-hidden="true">→</span>
+<b>CockroachDB</b>
+</div>
+<small>Source connector + sink support<br>Published on Confluent Hub</small>
+</div>
+</div>
+<section id="problem">
+<h2>The missing connection</h2>
+<p>CockroachDB had changefeeds. Data teams also had an existing ecosystem of Kafka Connect and Debezium tooling. Connecting those two worlds meant making CockroachDB changes work within the interfaces teams already operated.</p>
+</section>
+<section id="built">
+<h2>What I built</h2>
+<p>I wrote the CockroachDB connector from the first line of code and added CockroachDB support to the Debezium JDBC sink. The source streams changes out; the sink brings data in. Both were published on Confluent Hub.</p>
+<p>The connector builds on an enriched changefeed envelope. I filed the original request in 2024 and worked with the product team; CockroachDB's CDC team delivered it in v25.2.</p>
+</section>
+<section id="engineering">
+<h2>The engineering behind the integration</h2>
+<p>The work crossed two codebases and their contracts: CockroachDB's changefeed representation and Debezium's connector ecosystem. Getting the envelope supported in the database was a prerequisite to building the connector on top of it.</p>
+<p>I also published examples so developers could move from reading the documentation to running the integration.</p>
+</section>
+<section id="result">
+<h2>What changed</h2>
+<div class="outcome">
+<p>The Debezium project adopted the connector as an official integration, and it graduated out of incubating.</p>
+</div>
+<p>Teams can use CockroachDB through the Debezium ecosystem, with source code, documentation, examples, and packaged source and sink integrations available publicly.</p>
+</section>
+<h2>Explore the work</h2>
+<div class="resources">
+<a href="https://github.com/debezium/debezium-connector-cockroachdb">source ↗</a>
+<a href="https://debezium.io/documentation/reference/stable/connectors/cockroachdb.html">docs ↗</a>
+<a href="https://www.confluent.io/hub/cockroachdb/debezium-connector-cockroachdb">confluent hub, source ↗</a>
+<a href="https://www.confluent.io/hub/cockroachdb/debezium-connector-jdbc">confluent hub, jdbc sink ↗</a>
+<a href="https://github.com/viragtripathi/debezium-cockroachdb-examples">examples ↗</a>
+</div>
+</div>
+</div>
+</main>
+<div class="wrap">
+<section class="contact" id="contact">
+<div>
+<p class="eyebrow">Let's build something useful</p>
+<h2>The best conversations<br>start with a real problem.</h2>
+</div>
+<a class="button" href="mailto:virag.tripathi@gmail.com">Get in touch <span aria-hidden="true">↗</span>
+</a>
+</section>
+<footer class="footer">
+<span>Virag Tripathi · Tampa, Florida</span>
+<div>
+<a href="https://github.com/viragtripathi">GitHub</a>
+<a href="https://www.linkedin.com/in/virag">LinkedIn</a>
+<a href="../resume.html">Resume</a>
+<a href="../terminal.html">&gt;_ Terminal</a>
+</div>
+</footer>
+</div>
+</body>
+</html>
