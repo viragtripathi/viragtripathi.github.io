@@ -21,7 +21,7 @@ python3 -m venv .venv
 | `content/portfolio.json` | Project and writing links |
 | `content/resume.json` | Resume content shared by the HTML and PDF |
 | `assets/site.css` and `assets/site.js` | Site styling and interactions |
-| `assets/resume.css` | Browser and print styling for the resume |
+| `assets/resume.css` and `assets/resume.js` | Resume styling and optional terminal introduction |
 | `work/debezium-explainer.html`, `assets/debezium-explainer.css`, `assets/debezium-explainer.js` | Interactive CDC walkthrough |
 | `terminal.html` | Optional terminal interface |
 
@@ -33,6 +33,7 @@ Edit the source files, then rebuild the outputs you changed:
 .venv/bin/python scripts/build_social.py
 .venv/bin/python scripts/check_site.py
 node --check assets/site.js
+node --check assets/resume.js
 ```
 
 The social image builder uses system fonts. Set `PORTFOLIO_FONT_DIR` to a directory containing `Arial.ttf` and `Arial Bold.ttf` if needed. On Linux it also checks for DejaVu Sans.

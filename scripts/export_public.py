@@ -8,7 +8,7 @@ PUBLIC_FILES = (
     'index.html', 'resume.html', 'terminal.html',
     'work/debezium-explainer.html', 'assets/debezium-explainer.css', 'assets/debezium-explainer.js',
     'work/ai.html', 'work/debezium.html', 'work/ibm.html',
-    'assets/site.css', 'assets/site.js', 'assets/resume.css',
+    'assets/site.css', 'assets/site.js', 'assets/resume.css', 'assets/resume.js',
     'assets/favicon.svg', 'assets/virag-portrait.jpg',
     'assets/codex-demo.mp4', 'assets/codex-poster.jpg',
     'assets/social-preview.png', 'assets/virag-tripathi-resume.pdf',

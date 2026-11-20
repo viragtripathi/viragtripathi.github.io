@@ -61,3 +61,30 @@ h2{margin-top:16px}
 .resume-page{line-height:1.4}
 }
 
+
+/* Optional terminal introduction; the resume and PDF are always prebuilt. */
+[hidden]{display:none!important}
+button{font:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.toolbar button{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:4px;padding:10px 12px;min-height:44px}
+.intro-open{overflow:hidden}
+.resume-intro{width:min(600px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:0;border:1px solid #59442f;border-radius:14px;background:#191b1d;color:#eee8df;box-shadow:0 25px 100px #0006;overflow:auto}
+.resume-intro::backdrop{background:#201b15c9;backdrop-filter:blur(5px)}
+.terminal-bar{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid #ffffff18;font:13px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#c2b7a8}
+.terminal-lights{display:flex;gap:6px}.terminal-lights i{width:9px;height:9px;border-radius:50%;background:#df9360}.terminal-lights i:nth-child(2){background:#d6ba75}.terminal-lights i:nth-child(3){background:#8aaf8a}
+.terminal-bar h2{margin:0;border:0;padding:0;font:inherit;color:inherit;letter-spacing:0;text-transform:none}
+.terminal-content{padding:28px 24px;min-height:215px;font:14px/1.85 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.terminal-command{margin:0 0 17px;font-size:18px;color:#fff}.terminal-prompt{color:#e5a66d;margin-right:10px}.terminal-cursor{display:inline-block;width:8px;height:18px;vertical-align:-3px;margin-left:3px;background:#e5a66d;animation:cursor-blink .75s steps(1) infinite}
+.build-line{margin:4px 0;color:#c9c1b5}.build-line span{color:#9dcb9e;margin-right:10px}.build-line:last-child{color:#f2cba7}
+.intro-actions{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 24px;border-top:1px solid #ffffff18;font-size:14px}
+.intro-actions a{color:#f2cba7}.intro-actions button{padding:10px 15px;background:#f1e8db;color:#29251f;border:0;border-radius:5px;min-height:44px}
+.resume-status{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0)}
+#resume-content{position:relative}
+.resume-reveal .resume-page{animation:resume-appear .7s ease-out both}
+.resume-reveal::after{content:"";position:absolute;pointer-events:none;z-index:2;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,transparent,#d18b47,transparent);box-shadow:0 0 28px 10px #d18b4733;animation:resume-scan .8s ease-in-out both}
+@keyframes cursor-blink{50%{opacity:0}}
+@keyframes resume-appear{from{opacity:.35;filter:blur(2px)}to{opacity:1;filter:blur(0)}}
+@keyframes resume-scan{from{top:0;opacity:0}10%{opacity:1}90%{opacity:1}to{top:100%;opacity:0}}
+@media(max-width:600px){.terminal-content{padding:24px 18px;font-size:12px}.intro-actions{padding:16px 18px}.toolbar{gap:12px}.terminal-bar{padding:14px 18px}.terminal-command{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.resume-reveal .resume-page,.resume-reveal::after,.terminal-cursor{animation:none!important}.resume-reveal::after{display:none}}
+@media print{.resume-intro,.resume-reveal::after,.resume-status{display:none!important}.resume-reveal .resume-page{animation:none;filter:none;opacity:1}.intro-open{overflow:visible}}

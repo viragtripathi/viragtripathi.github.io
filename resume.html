@@ -7,17 +7,55 @@
 <meta name="description" content="Customer-facing technical leader in sales engineering, applied AI, and solution architecture.">
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="assets/resume.css">
+<script src="assets/resume.js" defer>
+</script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 <nav class="toolbar" aria-label="Resume navigation">
 <a href="index.html">← Portfolio</a>
+<button id="replay-intro" type="button" hidden>Replay intro</button>
 <a href="assets/virag-tripathi-resume.pdf" download>Download two-page PDF ↓</a>
 </nav>
-<main>
+<dialog class="resume-intro" id="resume-intro" aria-labelledby="intro-title" aria-describedby="intro-description">
+<div class="terminal-bar">
+<span class="terminal-lights" aria-hidden="true">
+<i>
+</i>
+<i>
+</i>
+<i>
+</i>
+</span>
+<h2 id="intro-title">virag@portfolio ~</h2>
+</div>
+<p id="intro-description" class="resume-status">Your resume is ready. This brief terminal introduction closes automatically. You can skip it or download the PDF immediately.</p>
+<div class="terminal-content" aria-hidden="true">
+<p class="terminal-command">
+<span class="terminal-prompt">$</span>
+<span id="build-command">
+</span>
+<span class="terminal-cursor">
+</span>
+</p>
+<p class="build-line" hidden>
+<span>✓</span> Experience &amp; selected work</p>
+<p class="build-line" hidden>
+<span>✓</span> Sales engineering · Applied AI</p>
+<p class="build-line" hidden>
+<span>✓</span> Two pages. Ready to explore.</p>
+</div>
+<div class="intro-actions">
+<a id="intro-download" href="assets/virag-tripathi-resume.pdf" download>Download PDF</a>
+<button id="skip-intro" type="button" autofocus>Skip intro</button>
+</div>
+</dialog>
+<p id="resume-status" class="resume-status" role="status">
+</p>
+<main id="resume-content">
 <article class="resume-page" aria-label="Resume page 1">
 <header class="resume-header">
-<h1>Virag Tripathi</h1>
+<h1 tabindex="-1">Virag Tripathi</h1>
 <div class="role">Principal, AI Ecosystems Engineer</div>
 <div class="contact">Tampa, FL · <a href="mailto:virag.tripathi@gmail.com">virag.tripathi@gmail.com</a> · 404-512-2656<br>
 <a href="https://viragtripathi.github.io">viragtripathi.github.io</a> · <a href="https://www.linkedin.com/in/virag">linkedin.com/in/virag</a> · <a href="https://github.com/viragtripathi">github.com/viragtripathi</a>
