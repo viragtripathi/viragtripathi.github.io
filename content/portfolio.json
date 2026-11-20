@@ -1,0 +1,297 @@
+{
+  "SHIP": [
+    {
+      "k": "debezium-cockroachdb",
+      "links": [
+        [
+          "https://github.com/debezium/debezium-connector-cockroachdb",
+          "source"
+        ],
+        [
+          "https://debezium.io/documentation/reference/stable/connectors/cockroachdb.html",
+          "docs"
+        ],
+        [
+          "https://www.confluent.io/hub/cockroachdb/debezium-connector-cockroachdb",
+          "confluent hub, source"
+        ],
+        [
+          "https://www.confluent.io/hub/cockroachdb/debezium-connector-jdbc",
+          "confluent hub, jdbc sink"
+        ],
+        [
+          "https://github.com/viragtripathi/debezium-cockroachdb-examples",
+          "Run the CDC demos"
+        ]
+      ]
+    },
+    {
+      "k": "langchain-cockroachdb",
+      "links": [
+        [
+          "https://github.com/cockroachdb/langchain-cockroachdb",
+          "source"
+        ],
+        [
+          "https://github.com/viragtripathi/langchain-cockroachdb-hackathon",
+          "Build your first AI app"
+        ],
+        [
+          "https://pypi.org/project/langchain-cockroachdb/",
+          "pypi"
+        ],
+        [
+          "https://docs.langchain.com/oss/python/integrations/providers/cockroachdb",
+          "langchain docs"
+        ]
+      ]
+    },
+    {
+      "k": "ai-coding-plugins",
+      "links": [
+        [
+          "https://github.com/cockroachdb/claude-plugin",
+          "claude code"
+        ],
+        [
+          "https://github.com/cockroachdb/cursor-plugin",
+          "cursor"
+        ],
+        [
+          "https://github.com/cockroachdb/copilot-plugin",
+          "copilot"
+        ],
+        [
+          "https://github.com/cockroachdb/codex-plugin",
+          "codex"
+        ],
+        [
+          "https://chatgpt.com/plugins/plugin_asdk_app_6ae160c3d9e48191aaeffd03cc5ef09d",
+          "chatgpt"
+        ],
+        [
+          "https://www.cockroachlabs.com/blog/cockroachdb-plugin-for-chatgpt-and-codex/",
+          "launch blog"
+        ],
+        [
+          "https://github.com/cockroachlabs/cockroachdb-skills",
+          "skills library"
+        ]
+      ]
+    },
+    {
+      "k": "mcp-toolbox",
+      "links": [
+        [
+          "https://mcp-toolbox.dev/integrations/cockroachdb/source/",
+          "docs"
+        ],
+        [
+          "https://github.com/googleapis/genai-toolbox",
+          "source"
+        ],
+        [
+          "https://medium.com/@mcp_toolbox/multi-source-reasoning-with-cockroachdb-and-google-cloud-databases-using-mcp-toolbox-64c39ea878f5",
+          "blog"
+        ]
+      ]
+    },
+    {
+      "k": "peerdb-clickhouse",
+      "links": [
+        [
+          "https://github.com/PeerDB-io/peerdb",
+          "source"
+        ],
+        [
+          "https://docs.peerdb.io/connect/cockroachdb",
+          "setup guide"
+        ],
+        [
+          "https://github.com/viragtripathi/peerdb-cockroachdb-examples",
+          "examples"
+        ]
+      ]
+    },
+    {
+      "k": "airflow-cockroachdb",
+      "links": [
+        [
+          "https://github.com/viragtripathi/cockroachdb-airflow-poc",
+          "source"
+        ]
+      ]
+    },
+    {
+      "k": "chaos-demo",
+      "links": [
+        [
+          "https://demos.cockroachlabs.com/",
+          "demos.cockroachlabs.com"
+        ],
+        [
+          "https://github.com/viragtripathi/cockroach-chaos-demo",
+          "chaos cluster"
+        ]
+      ]
+    },
+    {
+      "k": "ibm-platforms",
+      "links": [
+        [
+          "https://www.cockroachlabs.com/blog/ibm-oems-cockroachdb/",
+          "ibm oem announcement"
+        ],
+        [
+          "https://www.prnewswire.com/news-releases/cockroachdb-brings-distributed-sql-to-ibm-power-and-ibm-cloud-302770969.html",
+          "power and ibm cloud launch"
+        ],
+        [
+          "https://community.ibm.com/community/user/blogs/virag-tripathi/2026/07/16/cockroachdb-on-ibm-linuxone-distributed-sql-for-ai",
+          "ibm community blog"
+        ],
+        [
+          "https://github.com/viragtripathi/cockroachdb-watsonx-data-pipeline",
+          "watsonx.data pipeline"
+        ]
+      ]
+    },
+    {
+      "k": "banko-ai",
+      "links": [
+        [
+          "https://github.com/cockroachlabs-field/banko-ai-assistant",
+          "source"
+        ],
+        [
+          "https://demos.cockroachlabs.com/",
+          "demos.cockroachlabs.com"
+        ],
+        [
+          "https://www.cockroachlabs.com/blog/resilient-genai-agentic-apps-intelligent-memory/",
+          "re:invent recap"
+        ]
+      ]
+    },
+    {
+      "k": "vectordbbench",
+      "links": [
+        [
+          "https://github.com/zilliztech/VectorDBBench",
+          "source"
+        ]
+      ]
+    },
+    {
+      "k": "upstream",
+      "links": [
+        [
+          "https://github.com/cockroachdb/cockroach",
+          "cockroachdb/cockroach"
+        ],
+        [
+          "https://github.com/cockroachdb/sqlalchemy-cockroachdb",
+          "sqlalchemy-cockroachdb"
+        ],
+        [
+          "https://github.com/cockroachdb/docs",
+          "cockroachdb/docs"
+        ]
+      ]
+    },
+    {
+      "k": "tools",
+      "links": [
+        [
+          "https://github.com/viragtripathi/crdb-dump",
+          "crdb-dump"
+        ],
+        [
+          "https://github.com/viragtripathi/cockroachdb-jdbc-wrapper",
+          "jdbc-wrapper"
+        ],
+        [
+          "https://github.com/viragtripathi/cockroachdb-analyzer",
+          "analyzer"
+        ]
+      ]
+    },
+    {
+      "k": "redis-connect",
+      "links": [
+        [
+          "https://github.com/redis-field-engineering/redis-connect-dist",
+          "redis connect"
+        ],
+        [
+          "https://hub.docker.com/r/redislabs/redis-connect",
+          "redis connect on docker hub"
+        ],
+        [
+          "https://hub.docker.com/r/virag/redis-enterprise-docker-extension",
+          "docker extension"
+        ],
+        [
+          "https://github.com/redis-field-engineering/redis-enterprise-docker-extension",
+          "extension source"
+        ]
+      ]
+    },
+    {
+      "k": ".internal",
+      "links": []
+    }
+  ],
+  "WRITING": [
+    [
+      "https://www.cockroachlabs.com/blog/cockroachdb-plugin-for-chatgpt-and-codex/",
+      "The CockroachDB plugin for ChatGPT and Codex, co-authored the launch blog",
+      "cockroachlabs.com"
+    ],
+    [
+      "https://medium.com/@mcp_toolbox/multi-source-reasoning-with-cockroachdb-and-google-cloud-databases-using-mcp-toolbox-64c39ea878f5",
+      "Cross cloud AI agents with CockroachDB and Google Cloud databases, written with the Google team",
+      "MCP Toolbox on Medium"
+    ],
+    [
+      "https://community.ibm.com/community/user/blogs/virag-tripathi/2026/07/16/cockroachdb-on-ibm-linuxone-distributed-sql-for-ai",
+      "CockroachDB on IBM LinuxONE, distributed SQL for AI",
+      "IBM Community"
+    ],
+    [
+      "https://medium.com/@virag.tripathi/building-agentic-ai-on-resilient-data-from-oltp-to-lakehouse-with-watsonx-cockroachdb-107426db91e0",
+      "Building agentic AI on resilient data, from OLTP to lakehouse with watsonx and CockroachDB",
+      "Medium"
+    ],
+    [
+      "https://medium.com/@virag.tripathi/from-vector-search-to-durable-ai-agents-langchain-langgraph-and-cockroachdb-be1321d6fb50",
+      "From vector search to durable AI agents with LangChain, LangGraph and CockroachDB",
+      "Medium"
+    ],
+    [
+      "https://medium.com/@virag.tripathi",
+      "Everything else, cloud native core banking with Apache Fineract, vector search, JDBC retries",
+      "Medium"
+    ],
+    [
+      "https://www.cockroachlabs.com/blog/resilient-genai-agentic-apps-intelligent-memory/",
+      "Presented Build Resilient GenAI and Agentic Apps with Intelligent Memory at AWS re:Invent 2025",
+      "talk"
+    ],
+    [
+      "https://www.cockroachlabs.com/partners/ibm/",
+      "Presented CockroachDB on IBM platforms at IBM Think and IBM TechXchange",
+      "talks"
+    ],
+    [
+      "https://github.com/viragtripathi/cockroachdb-watsonx-data-pipeline",
+      "Presented the CockroachDB to watsonx.data lakehouse pipeline at IBM's Tech Acceleration Workshop, April 2026",
+      "talk"
+    ],
+    [
+      "https://cockroachdb-ai.devpost.com/",
+      "Judge for the CockroachDB and AWS hackathon on agentic memory, 600+ submissions",
+      "Devpost"
+    ]
+  ]
+}

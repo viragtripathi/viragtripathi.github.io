@@ -1,0 +1,129 @@
+{
+  "name": "Virag Tripathi",
+  "title": "Principal, AI Ecosystems Engineer",
+  "summary": "Customer-facing technical leader spanning sales engineering, field engineering, and applied AI. Takes customer and partner problems from discovery through proofs of concept to production, combining solution architecture with hands-on development. Previously a Principal Field Engineer at Redis and Principal Solutions Architect at Cockroach Labs.",
+  "pages": [
+    [
+      {
+        "heading": "Experience",
+        "jobs": [
+          {
+            "role": "Principal, AI Ecosystems Engineer",
+            "company": "Cockroach Labs",
+            "dates": "Jan 2026 – present",
+            "bullets": [
+              "Turned developer needs and customer feedback into CockroachDB plugins for Claude Code, Cursor, Copilot, and Codex. Delivered the ChatGPT marketplace launch and worked with Cloud engineering on required MCP capabilities.",
+              "Built CockroachDB’s Debezium source connector and JDBC sink support. The connector was adopted upstream and graduated from incubating; source and sink were published on Confluent Hub.",
+              "Designed, wrote, and maintain langchain-cockroachdb: vector and hybrid search, chat history, LangGraph checkpoints, and long-term memory. Authored the CockroachDB provider documentation.",
+              "Wrote the CockroachDB integration for Google’s MCP Toolbox for Databases and collaborated with Google to merge it upstream.",
+              "Built the native CockroachDB connector for PeerDB to stream changes into ClickHouse. Validated a full CDC mirror on a five-node cluster with node failures; counts and checksums matched.",
+              "Shipped CockroachDB certification on IBM Power Systems and IBM Cloud. Contributed core platform fixes, including the ppc64le page-size fix released in v26.3."
+            ]
+          },
+          {
+            "role": "Principal Solutions Architect",
+            "company": "Cockroach Labs",
+            "dates": "Feb 2024 – Dec 2025",
+            "bullets": [
+              "Led technical engagements across core banking, CDC, and AI partnerships, working through proofs of concept and database blockers with partner engineers. Built a CockroachDB-to-watsonx.data and Apache Iceberg pipeline.",
+              "Led technical enablement for IBM LinuxONE and Power, from initial validation through platform support, providing groundwork for the IBM OEM agreement announced in October 2025.",
+              "Originated the enriched changefeed envelope request in 2024 and worked with product on its delivery in v25.2, enabling third-party CDC integrations using Debezium-format changefeeds.",
+              "Built Banko AI, a multi-agent banking assistant running RAG and memory on CockroachDB, packaged for PyPI and Docker. Presented the resilient agentic AI work at AWS re:Invent 2025."
+            ]
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "heading": "Experience, continued",
+        "jobs": [
+          {
+            "role": "Principal Field Engineer",
+            "company": "Redis",
+            "dates": "Nov 2020 – Feb 2024",
+            "bullets": [
+              "Built Redis Connect, a CDC and data integration platform for Redis Enterprise used in production at Fortune 100 customers in consumer technology, telecom, and financial services.",
+              "Owned data integration and messaging in the field, building customer-facing proofs of concept and demos. Built the Redis Enterprise Docker Extension for local development and testing."
+            ]
+          },
+          {
+            "role": "Solutions Architect",
+            "company": "Redis",
+            "dates": "Aug 2018 – Nov 2020",
+            "bullets": [
+              "Reached 160% of ARR goal in 2020 and 110% in 2018, with the most net-new logos in the Americas. Architected Redis solutions, built proofs of concept, and guided customer HA and disaster recovery strategies across clouds."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Earlier experience",
+        "rows": [
+          [
+            "Global Solutions Architect · TIBCO Software",
+            "2015–2018"
+          ],
+          [
+            "Big Data Consultant · JetBlue Airways",
+            "2014–2015"
+          ],
+          [
+            "Senior Specialty Developer · Delta Air Lines",
+            "2010–2014"
+          ],
+          [
+            "Senior Consultant, Professional Services · TIBCO",
+            "2008–2010"
+          ],
+          [
+            "Senior Developer · Delta Technology",
+            "2003–2008"
+          ],
+          [
+            "Senior Developer · Cingular Wireless",
+            "2000–2003"
+          ]
+        ]
+      },
+      {
+        "heading": "Technical & field expertise",
+        "rows": [
+          [
+            "Field practice",
+            "Discovery, proofs of concept, technical demos, solution architecture"
+          ],
+          [
+            "Languages",
+            "Go, Java, Python, SQL, TypeScript"
+          ],
+          [
+            "AI & agents",
+            "MCP, LangChain, LangGraph, RAG, vector search, agent memory"
+          ],
+          [
+            "Data systems",
+            "CockroachDB, PostgreSQL, Redis, Kafka, Debezium, ClickHouse"
+          ],
+          [
+            "Platforms",
+            "GCP, AWS, Azure, Kubernetes, Docker, IBM LinuxONE and Power"
+          ]
+        ]
+      },
+      {
+        "heading": "Writing, speaking & recognition",
+        "paragraphs": [
+          "Speaker at AWS re:Invent 2025, IBM Think, and IBM TechXchange. Co-authored the CockroachDB plugin launch article; published integration articles with Google’s MCP Toolbox team and the IBM Community.",
+          "IBM Champion · Cockroach Labs President’s Club (2026) · Redis CEO Award (2020) · Redis President’s Club (2018, 2020, 2023)."
+        ]
+      },
+      {
+        "heading": "Education",
+        "paragraphs": [
+          "B.Sc. Mathematics and Physics · Deendayal Upadhyay Gorakhpur University"
+        ]
+      }
+    ]
+  ]
+}

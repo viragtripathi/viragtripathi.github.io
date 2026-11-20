@@ -1,0 +1,11 @@
+__pycache__/
+.venv/
+.DS_Store
+.idea/
+.env
+.env.*
+!.env.example
+# Local planning and working notes do not belong in the public repository.
+/docs/
+/notes/
+/VERIFICATION.md
