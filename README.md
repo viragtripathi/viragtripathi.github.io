@@ -22,6 +22,7 @@ python3 -m venv .venv
 | `content/resume.json` | Resume content shared by the HTML and PDF |
 | `assets/site.css` and `assets/site.js` | Site styling and interactions |
 | `assets/resume.css` | Browser and print styling for the resume |
+| `work/debezium-explainer.html`, `assets/debezium-explainer.css`, `assets/debezium-explainer.js` | Interactive CDC walkthrough |
 | `terminal.html` | Optional terminal interface |
 
 Edit the source files, then rebuild the outputs you changed:

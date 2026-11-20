@@ -6,6 +6,7 @@ import shutil
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_FILES = (
     'index.html', 'resume.html', 'terminal.html',
+    'work/debezium-explainer.html', 'assets/debezium-explainer.css', 'assets/debezium-explainer.js',
     'work/ai.html', 'work/debezium.html', 'work/ibm.html',
     'assets/site.css', 'assets/site.js', 'assets/resume.css',
     'assets/favicon.svg', 'assets/virag-portrait.jpg',
