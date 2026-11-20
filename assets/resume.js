@@ -13,7 +13,6 @@
   const phase = document.querySelector('#build-phase');
   const documentState = document.querySelector('#document-state');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const sessionKey = 'vt-resume-intro-v2';
   let timers = [];
   let active = false;
   let mode = 'intro';
@@ -23,13 +22,6 @@
 
   const later = (fn, delay) => timers.push(window.setTimeout(fn, delay));
   function clearTimers() { timers.forEach(clearTimeout); timers = []; }
-  function seen() {
-    try { return sessionStorage.getItem(sessionKey) === 'seen'; }
-    catch { return false; }
-  }
-  function remember() {
-    try { sessionStorage.setItem(sessionKey, 'seen'); } catch { /* Optional storage. */ }
-  }
   function close(animate = false) {
     clearTimers();
     active = false;
@@ -73,7 +65,6 @@
       else status.textContent = 'Resume ready. Animation skipped for reduced motion.';
       return;
     }
-    remember();
     active = true;
     dialog.dataset.mode = mode;
     dialog.dataset.step = '0';
@@ -112,5 +103,6 @@
   window.addEventListener('pageshow', event => { if (event.persisted) reset(); });
   document.addEventListener('visibilitychange', () => { if (document.hidden) reset(); });
   reduced.addEventListener('change', () => { if (reduced.matches) reset(); });
-  if (!seen() && !location.hash && !reduced.matches && !window.matchMedia('print').matches) start();
+  // Play on each fresh visit from any Resume link; Back restores without replaying.
+  if (!location.hash && !reduced.matches && !window.matchMedia('print').matches) start();
 })();
